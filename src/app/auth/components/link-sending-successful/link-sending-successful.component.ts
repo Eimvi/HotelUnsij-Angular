@@ -22,14 +22,13 @@ export class LinkSendingSuccessfulComponent implements OnInit {
     this.user = {
       email: this.rutaActiva.snapshot.params.email
     };
-
+    
     this.rutaActiva.params.subscribe(
       (params: Params) => {
         if (this.user.email == null) {
           this.router.navigateByUrl('/login');
         } else {
           this.user.email = params.email;
-          this.timer();
         }
       }
     );
