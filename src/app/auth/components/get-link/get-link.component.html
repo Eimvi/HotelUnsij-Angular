@@ -1,0 +1,41 @@
+    <div class="container my-5">
+        <div class="mx-4 d-flex flex-column justify-content-center col-sm-6 mx-sm-auto col-lg-3 gap-4">
+            <div class="text-center">
+                <img src="./assets/img/email.svg" alt="sobre de un correo con un documento en su interior"
+                    class="img-fluid" width="200">
+            </div>
+
+            <p class="text-center fs-5 fw-normal">Para poder recuperar tu contraseña enviaremos un enlace a la
+                siguiente dirección de correo electrónico</p>
+
+            <form class="d-flex flex-column gap-4 needs-validation css-form" novalidate (submit)="onSubmit()"
+                [formGroup]="address">
+                <div>
+                    <label for="email" form-label>Correo</label>
+                    <input type="email" name="email" id="email" class="form-control form-control-lg shadow-sm" required
+                        formControlName="email">
+                    <div class="text-danger small"
+                        *ngIf="address.get('email')?.hasError('required') && address.get('email')?.touched">
+                        *Email requerido
+                    </div>
+                    <div class="text-danger small"
+                        *ngIf="address.get('email')?.hasError('email') && address.get('email')?.touched">
+                        *El email es inválido
+                    </div>
+
+                    <div class="text-danger small"
+                        *ngIf="address.get('email')?.hasError('minlength') && address.get('email')?.touched">
+                        *El email debe tener mínimo 15 caracteres
+                    </div>
+                    <div class="text-danger small"
+                        *ngIf="address.get('email')?.hasError('maxlength') && address.get('email')?.touched">
+                        *El email debe tener máximo 40 caracteres
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-lg btn-primary d-block shadow-sm"
+                    [disabled]="address.invalid">Enviar</button>
+            </form>
+
+        </div>
+    </div>
