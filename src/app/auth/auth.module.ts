@@ -3,17 +3,19 @@ import { CommonModule } from '@angular/common';
 
 import { AuthRoutingModule } from './auth-routing.module';
 import { AuthComponent } from './auth.component';
-import { LinkSendingSuccessfulComponent } from './components/link-sending-successful/link-sending-successful.component';
+import { GetLinkComponent } from './components/get-link/get-link.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     AuthComponent,
-    LinkSendingSuccessfulComponent,
+    GetLinkComponent
   ],
   imports: [
     CommonModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class AuthModule { }
