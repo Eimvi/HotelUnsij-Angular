@@ -23,7 +23,7 @@ export class GetLinkComponent implements OnInit {
     });
   }
 
-  // Call to service
+  //Call to service
   onSubmit() {
     const email: Address = this.address.getRawValue();
     this.profileService.getLink(email).subscribe(
