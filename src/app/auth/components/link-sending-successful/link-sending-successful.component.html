@@ -1,0 +1,24 @@
+<div class="container my-5">
+    <div class="mx-4 d-flex flex-column justify-content-center col-sm-6 mx-sm-auto col-lg-3 gap-4">
+        <div class="text-center">
+            <img src="../../../../assets/img/email-send.svg"
+                alt="sobre de un correo con un documento en su interior que contiene un ícono de OK" class="img-fluid"
+                width="200">
+        </div>
+
+        <p class="text-center fs-5 fw-normal text-primary">"Se ha enviado exitosamente un correo a tu bandeja de
+            entrada"
+        </p>
+
+        <p class="text-center fw-light">{{user.email}}</p>
+
+        <p #count class="text-center text-muted small fw-light">Podrás solicitar un nuevo enlace en: {{timer$|async}}
+        </p>
+
+        <div class="d-flex flex-column gap-4">
+            <button class="btn btn-lg btn-primary d-block shadow-sm" (click)="timer()"
+                [disabled]="disabled">Enviar</button>
+            <a class="btn btn-lg btn-outline-primary d-block shadow-sm">Regresar</a>
+        </div>
+    </div>
+</div>
