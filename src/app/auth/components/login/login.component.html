@@ -1,0 +1,58 @@
+<div class="container my-5">
+  <div class="mx-4 mx-sm-auto d-flex flex-column gap-4 justify-content-center col-sm-7 col-md-6 col-lg-3">
+    <div class="text-center">
+      <img src="./assets/img/authentication.svg" alt="una chica autenticando su identidad en un teléfono"
+        class="img-fluid" width="200">
+    </div>
+
+    <h1 class="text-center fs-2 fw-normal text-primary">Iniciar sesión</h1>
+
+    <form action="" class="d-flex flex-column gap-4 needs-validation css-form" novalidate [formGroup]="user"
+      (submit)="onSubmit()">
+      <div>
+        <label for="email" class="form-label">Correo</label>
+        <input type="text" name="email" id="email" class="form-control form-control-lg shadow-sm" required
+          formControlName="email">
+        <div class="text-danger small" *ngIf="user.get('email')?.hasError('required') && user.get('email')?.touched">
+          *Este campo es requerido
+        </div>
+        <div class="text-danger small" *ngIf="user.get('email')?.hasError('email') && user.get('email')?.touched">
+          *El correo ingresado es inválido
+        </div>
+      </div>
+
+      <div>
+        <label for="password" class="form-label">Contraseña</label>
+        <input class="outline" [type]="password" name="password" id="password" class="form-control form-control-lg shadow-sm"
+          required="required" formControlName="password">
+        <div class="text-danger small"  *ngIf="user.get('password')?.hasError('required') && user.get('password')?.touched">
+          *Este campo es requerido
+        </div>
+      </div>
+
+      <div class="form-check">
+        <input (click)="hideorShowPassword()" class="form-check-input" type="checkbox" value="" id="showPassword">
+        <label class="form-check-label" for="showPassword">
+          Mostrar contraseña
+        </label>
+      </div>
+
+      <button [disabled]="user.invalid" type="submit" class="btn btn-lg btn-primary d-block shadow-sm">Ingresar</button>
+    </form>
+
+    <a href="" class="d-block text-center link-primary small fw-light" routerLink="/auth/get-link">¿Has olvidado la
+      contraseña?</a>
+
+    <span class="border border-muted d-block mx-5"></span>
+
+    <span class="d-block text-center text-muted small fw-light">¿No tienes una cuenta?</span>
+
+    <button class="btn btn-lg btn-outline-primary d-block shadow-sm" routerLink="/auth/register">Crear una cuenta</button>
+  </div>
+</div>
+
+
+
+
+
+

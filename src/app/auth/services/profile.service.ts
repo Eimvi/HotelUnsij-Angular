@@ -1,8 +1,12 @@
 
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
-import { Address } from '../interfaces/address.interface';
 import { HttpClient } from '@angular/common/http';
+import { tap} from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
+
+import { User } from '../interfaces/user';
+import { LoginResponse } from '../interfaces/login.interface';
+import { Address } from '../interfaces/address.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +14,22 @@ import { HttpClient } from '@angular/common/http';
 export class ProfileService {
 
   private readonly URL: string = environment.URL;
+  private profile! : LoginResponse;
 
-  constructor ( private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
+
+  login(user: User){
+    return this.http.post<LoginResponse>(`${this.URL}auth/login`,user).pipe(
+    tap(
+      (resp)=>{
+        localStorage.setItem('token',resp.accessToken);
+        this.profile = resp;
+      }
+    )
+    );
+  }
 
   getLink(email: Address){
     return this.http.patch(`${this.URL}auth/request-reset-password`, email);
-
   }
 }
