@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from '../../interfaces/user';
 import { ProfileService } from '../../services/profile.service';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,9 +12,9 @@ import { ProfileService } from '../../services/profile.service';
 export class LoginComponent implements OnInit {
 
   user!: FormGroup;
-  password!: string;
+  password: string = 'password';
 
-  constructor(private fb: FormBuilder, public userService: ProfileService) {}
+  constructor(private fb: FormBuilder, public userService: ProfileService, public router: Router) {}
 
   ngOnInit(): void {
     this.user = this.fb.group({
@@ -21,12 +22,14 @@ export class LoginComponent implements OnInit {
       password: ['', [Validators.required]]
     });
 
-    this.password = 'password';
+
   }
 
   onSubmit(){
     const user: User = this.user.getRawValue();
-    this.userService.login(user).subscribe(data =>{})
+    this.userService.login(user).subscribe(
+      data => {
+        this.router.navigateByUrl('/menu')});
   }
 
   hideorShowPassword(){
