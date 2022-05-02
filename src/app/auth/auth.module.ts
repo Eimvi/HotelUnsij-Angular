@@ -5,13 +5,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthRoutingModule } from './auth-routing.module';
 import { AuthComponent } from './auth.component';
 import { LoginComponent } from './components/login/login.component';
+import { SuccessfulChangeComponent } from './components/successful-change/successful-change.component';
 import { GetLinkComponent } from './components/get-link/get-link.component';
-
 
 @NgModule({
   declarations: [
     AuthComponent,
-    LoginComponent
+    LoginComponent,
+    SuccessfulChangeComponent,
     GetLinkComponent
   ],
   imports: [
