@@ -59,7 +59,7 @@ export class ChangePasswordComponent implements OnInit {
   // Invoca al servicio para restablecer la contraseña
   resetPassword(password: Password) {
     const passwordReset: PasswordReset = {
-      newPassword: password.newPassword,
+      password: password.newPassword,
       resetPasswordToken: this.route.snapshot.queryParams['resetPasswordToken']
     }
 
