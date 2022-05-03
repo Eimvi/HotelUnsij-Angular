@@ -28,7 +28,7 @@ export class GetLinkComponent implements OnInit {
     const email: Address = this.address.getRawValue();
     this.profileService.getLink(email).subscribe(
       resp => {
-        this.router.navigate(['auth/link-successful/',email]);
+        this.router.navigate([`/auth/link-successful/${email.email}`]);
       }
     )
   }
