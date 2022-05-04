@@ -65,9 +65,9 @@ export class ChangePasswordComponent implements OnInit {
 
     this.passwordService.changePassword(passwordReset).subscribe(
       resp => {
-        this.router.navigateByUrl('/successful-change');
+        this.router.navigateByUrl('auth/successful-change');
       }
-    )
+    );
   }
 
   get newPassword() {
