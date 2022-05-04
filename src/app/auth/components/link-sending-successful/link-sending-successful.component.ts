@@ -3,6 +3,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { timer, Observable } from 'rxjs';
 import { scan, takeWhile } from 'rxjs/operators';
 import { Address } from '../../interfaces/address.interface';
+import { ProfileService } from '../../services/profile.service';
 
 @Component({
   selector: 'app-link-sending-successful',
@@ -16,7 +17,7 @@ export class LinkSendingSuccessfulComponent implements OnInit {
   disabled: boolean = true;
   timer$!: Observable<number>;
 
-  constructor(private router: Router, private rutaActiva: ActivatedRoute) { }
+  constructor(private router: Router, private rutaActiva: ActivatedRoute, private profileService: ProfileService) { }
 
   ngOnInit(): void {
 
@@ -58,6 +59,14 @@ export class LinkSendingSuccessfulComponent implements OnInit {
         return x >= 0;
       })
     );
+  }
+
+  sendEmail(): void {
+    this.profileService.getLink(this.user).subscribe(
+      resp => {
+
+      }
+    )
   }
 
 }
