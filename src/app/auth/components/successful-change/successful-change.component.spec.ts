@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AuthComponent } from './auth.component';
+import { SuccessfulChangeComponent } from './successful-change.component';
 
-describe('AuthComponent', () => {
-  let component: AuthComponent;
-  let fixture: ComponentFixture<AuthComponent>;
+describe('SuccessfulChangeComponent', () => {
+  let component: SuccessfulChangeComponent;
+  let fixture: ComponentFixture<SuccessfulChangeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AuthComponent ]
+      declarations: [ SuccessfulChangeComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AuthComponent);
+    fixture = TestBed.createComponent(SuccessfulChangeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
