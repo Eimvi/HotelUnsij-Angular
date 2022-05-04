@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { LoginComponent } from './components/login/login.component';
 import { SuccessfulChangeComponent } from './components/successful-change/successful-change.component';
 import { GetLinkComponent } from './components/get-link/get-link.component';
@@ -16,6 +17,9 @@ const routes: Routes = [
   },
   {
     path: 'link-successful/:email', component: LinkSendingSuccessfulComponent
+  },
+  {
+    path: 'change-password', component: ChangePasswordComponent
   },
   {
     path: 'get-link', component: GetLinkComponent
