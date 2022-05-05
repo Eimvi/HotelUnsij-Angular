@@ -7,13 +7,15 @@ import { LoginComponent } from './components/login/login.component';
 import { SuccessfulChangeComponent } from './components/successful-change/successful-change.component';
 import { GetLinkComponent } from './components/get-link/get-link.component';
 import { LinkSendingSuccessfulComponent } from './components/link-sending-successful/link-sending-successful.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     SuccessfulChangeComponent,
     GetLinkComponent,
-    LinkSendingSuccessfulComponent
+    LinkSendingSuccessfulComponent,
+    ChangePasswordComponent
   ],
   imports: [
     CommonModule,
