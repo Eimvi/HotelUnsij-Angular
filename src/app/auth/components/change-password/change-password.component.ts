@@ -15,7 +15,6 @@ import { ConfirmedValidator } from '../../helpers/confirmed.validator';
 export class ChangePasswordComponent implements OnInit {
   passwordReset!: PasswordReset;
   passwordForm!: FormGroup;
-  expression: boolean = true;
   token: string = this.route.snapshot.queryParams['resetPasswordToken'];
   password: string = 'password';
 
