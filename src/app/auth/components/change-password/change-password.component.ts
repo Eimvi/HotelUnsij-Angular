@@ -16,12 +16,19 @@ export class ChangePasswordComponent implements OnInit {
   passwordReset!: PasswordReset;
   passwordForm!: FormGroup;
   expression: boolean = true;
+  token!: string;
+  password: string = 'password';
 
   constructor(private fb: FormBuilder,
     private passwordService: PasswordService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.createForm();
+    this.token = this.route.snapshot.queryParams['resetPasswordToken'];
+    if(!this.token){
+      this.router.navigateByUrl('/auth/login');
+    }else{
+      this.createForm();
+    }    
   }
 
   // Valida los datos del formulario
@@ -56,6 +63,14 @@ export class ChangePasswordComponent implements OnInit {
         this.router.navigateByUrl('/auth/successful-change');
       }
     );
+  }
+
+  hideShowPassword(){
+    if (this.password === 'password') {
+      this.password = 'text';
+    } else {
+      this.password = 'password';
+    }
   }
 
   get newPassword() {
