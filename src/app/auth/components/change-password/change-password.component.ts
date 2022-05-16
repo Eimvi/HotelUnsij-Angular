@@ -16,14 +16,13 @@ export class ChangePasswordComponent implements OnInit {
   passwordReset!: PasswordReset;
   passwordForm!: FormGroup;
   expression: boolean = true;
-  token!: string;
+  token: string = this.route.snapshot.queryParams['resetPasswordToken'];
   password: string = 'password';
 
   constructor(private fb: FormBuilder,
     private passwordService: PasswordService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.token = this.route.snapshot.queryParams['resetPasswordToken'];
     if(!this.token){
       this.router.navigateByUrl('/auth/login');
     }else{
@@ -55,7 +54,7 @@ export class ChangePasswordComponent implements OnInit {
   resetPassword(password: Password) {
     const passwordReset: PasswordReset = {
       password: password.newPassword,
-      resetPasswordToken: this.route.snapshot.queryParams['resetPasswordToken']
+      resetPasswordToken: this.token
     }
 
     this.passwordService.changePassword(passwordReset).subscribe(
