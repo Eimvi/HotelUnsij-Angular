@@ -7,6 +7,7 @@ import { SuccessfulChangeComponent } from './components/successful-change/succes
 import { GetLinkComponent } from './components/get-link/get-link.component';
 import { LinkSendingSuccessfulComponent } from './components/link-sending-successful/link-sending-successful.component';
 import { NotFoundComponent } from '../pages/not-found/not-found.component';
+import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,9 @@ const routes: Routes = [
   },
   {
     path: 'get-link', component: GetLinkComponent
+  },
+  {
+    path: 'register', component: RegisterComponent
   },
   {
     path: '',

@@ -1,0 +1,234 @@
+<div class="container my-5">
+
+  <div class="mx-4 d-flex flex-column min-vh-100- justify-content-center col-sm-6 mx-sm-auto col-lg-3 gap-4">
+    <div class="text-center">
+     <img src="../../../../assets/img/register.svg" class="img-fluid" width="158" alt="">
+    </div>
+    <h1 class="text-center display-5 fw-normal">Registrar nuevo usuario</h1>
+
+    <form action="" class="d-flex flex-column gap-4 needs-validation css-form" novalidate (submit)="onSubmit()"
+      [formGroup]="dataUser">
+
+      <div class="alert alert-danger text-center" role="alert"
+        *ngIf="dataUser.get('confirmPassword')?.hasError('confirmedValidator') && dataUser.get('confirmPassword')?.touched">
+        <span>
+          *Las contraseñas no coinciden
+        </span>
+      </div>
+
+      <div>
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" name="nombre" id="nombre" class="form-control form-control-lg shadow-sm" required
+          formControlName="name">
+        <div class="text-danger small"
+          *ngIf="dataUser.get('name')?.hasError('required') && dataUser.get('name')?.touched">
+          *Nombre requerido
+        </div>
+        <div class="text-danger small"
+          *ngIf="dataUser.get('name')?.hasError('maxlength')&& dataUser.get('name')?.touched">
+          *El nombre debe contener máximo 20 caracteres
+        </div>
+        <div class="text-danger small"
+          *ngIf="dataUser.get('name')?.hasError('pattern')&& dataUser.get('name')?.touched">
+          *El nombre debe contener solo letras
+        </div>
+      </div>
+
+      <div>
+        <label for="firstSurname" class="form-label">Apellido paterno</label>
+        <input type="text" name="firstSurname" id="firstSurname" class="form-control form-control-lg shadow-sm" required
+          formControlName="firstSurname">
+        <div class="text-danger small"
+          *ngIf="dataUser.get('firstSurname')?.hasError('required') && dataUser.get('firstSurname')?.touched">
+          *Apellido requerido
+        </div>
+        <div class="text-danger small"
+          *ngIf="dataUser.get('firstSurname')?.hasError('maxlength')&& dataUser.get('firstSurname')?.touched">
+          *El apellido debe contener máximo 15 caracteres
+        </div>
+        <div class="text-danger small"
+          *ngIf="dataUser.get('firstSurname')?.hasError('pattern')&& dataUser.get('firstSurname')?.touched">
+          *El apellido no puede contener números ni caracteres especiales
+        </div>
+      </div>
+
+      <div>
+        <label for="secondSurname" class="form-label">Apellido Materno</label>
+        <input type="text" name="secondSurname" id="secondSurname" class="form-control form-control-lg shadow-sm" required
+          formControlName="secondSurname">
+        <div class="text-danger small"
+          *ngIf="dataUser.get('secondSurname')?.hasError('required') && dataUser.get('secondSurname')?.touched">
+          *Apellido requerido
+        </div>
+        <div class="text-danger small"
+          *ngIf="dataUser.get('secondSurname')?.hasError('maxlength')&& dataUser.get('secondSurname')?.touched">
+          *El apellido debe contener máximo 15 caracteres
+        </div>
+        <div class="text-danger small"
+          *ngIf="dataUser.get('secondSurname')?.hasError('pattern')&& dataUser.get('secondSurname')?.touched">
+          *El apellido no puede contener números ni caracteres especiales
+
+        </div>
+      </div>
+
+      <div>
+        <label for="email" class="form-label">Correo</label>
+        <input type="email" name="email" id="email" class="form-control form-control-lg shadow-sm" required
+          formControlName="email">
+        <div class="text-danger small"
+          *ngIf="dataUser.get('email')?.hasError('required') && dataUser.get('email')?.touched">
+          *Correo requerido
+        </div>
+        <div class="text-danger small"
+          *ngIf="dataUser.get('email')?.hasError('email') && dataUser.get('email')?.touched">
+          *El correo es inválido
+        </div>
+
+        <div class="text-danger small"
+          *ngIf="dataUser.get('email')?.hasError('minlength') && dataUser.get('email')?.touched">
+          *El correo debe contener mínimo 15 caracteres
+        </div>
+        <div class="text-danger small"
+          *ngIf="dataUser.get('email')?.hasError('maxlength') && dataUser.get('email')?.touched">
+          *El correo debe contener máximo 30 caracteres
+        </div>
+      </div>
+
+      <div>
+        <label for="password" class="form-label">Contraseña</label>
+        <input type="password" [type]="password" name="password" id="password"
+          class="form-control form-control-lg shadow-sm" required formControlName="password">
+        <div class="text-danger small"
+          *ngIf="dataUser.get('password')?.hasError('required') && dataUser.get('password')?.touched">
+          *Contraseña requerida
+        </div>
+        <div class="text-danger small"
+          *ngIf="dataUser.get('password')?.hasError('pattern') && dataUser.get('password')?.touched">
+          *La contraseña debe contener entre 8 y 30 caracteres, un número, un carácter en mayúsculas y minúsculas y un caracter especial
+        </div>
+      </div>
+
+      <div>
+        <label for="confirmPassword" class="form-label">Confirmar contraseña</label>
+        <input type="password" [type]="confirmPassword" name="confirmPassword" id="confirmPassword"
+          class="form-control form-control-lg shadow-sm" required formControlName="confirmPassword">
+        <div class="text-danger small"
+          *ngIf="dataUser.get('confirmPassword')?.hasError('required') && dataUser.get('confirmPassword')?.touched">
+          *Contraseña requerida
+        </div>
+      </div>
+
+      <div class="form-check">
+        <input (click)="hideorShowPassword()" class="form-check-input" type="checkbox" value="" id="showPassword">
+        <label class="form-check-label" for="showPassword">
+          Mostrar contraseña
+        </label>
+      </div>
+
+
+      <div>
+        <label for="numberPhone" class="form-label">Número telefónico</label>
+        <input type="text" name="numberPhone" id="numberPhone" class="form-control form-control-lg shadow-sm" required
+          formControlName="numberPhone">
+        <div class="text-danger small"
+          *ngIf="dataUser.get('numberPhone')?.hasError('required') && dataUser.get('numberPhone')?.touched">
+          *Número telefónico requerido
+        </div>
+        <div class="text-danger small"
+          *ngIf="dataUser.get('numberPhone')?.hasError('minlength') && dataUser.get('numberPhone')?.touched">
+          *El número telefónico debe contener mínimo 10 caracteres
+        </div>
+        <div class="text-danger small"
+          *ngIf="dataUser.get('numberPhone')?.hasError('maxlength') && dataUser.get('numberPhone')?.touched">
+          *El número telefónico debe contener máximo 12 caracteres
+        </div>
+        <div class="text-danger small"
+          *ngIf="dataUser.get('numberPhone')?.hasError('pattern') && dataUser.get('numberPhone')?.touched">
+          *El número telefónico debe contener solamente números
+        </div>
+      </div>
+
+      <div>
+        <label for="address" class="form-label">Dirección</label>
+        <input type="text" name="address" id="address" class="form-control form-control-lg shadow-sm" required
+          formControlName="address">
+        <div class="text-danger small"
+          *ngIf="dataUser.get('address')?.hasError('required') && dataUser.get('address')?.touched">
+          *Dirección requerida
+        </div>
+        <div class="text-danger small"
+          *ngIf="dataUser.get('address')?.hasError('minlength') && dataUser.get('address')?.touched">
+          *La dirección debe contener mínimo 10 caracteres
+        </div>
+        <div class="text-danger small"
+          *ngIf="dataUser.get('address')?.hasError('maxlength') && dataUser.get('address')?.touched">
+          *La dirección debe contener máximo 50 caracteres
+        </div>
+      </div>
+
+      <div>
+        <label for="rfc" class="form-label">RFC</label>
+        <input type="text" name="rfc" id="rfc" class="form-control form-control-lg shadow-sm" required
+          formControlName="rfc">
+        <div class="text-danger small"
+          *ngIf="dataUser.get('rfc')?.hasError('required') && dataUser.get('rfc')?.touched">
+          *RFC requerido
+        </div>
+        <div class="text-danger small"
+          *ngIf="dataUser.get('rfc')?.hasError('minlength') && dataUser.get('rfc')?.touched">
+          *El RFC debe contener mínimo 12 caracteres
+        </div>
+        <div class="text-danger small"
+          *ngIf="dataUser.get('rfc')?.hasError('maxlength') && dataUser.get('rfc')?.touched">
+          *El RFC debe contener máximo 13 caracteres
+        </div>
+        <div class="text-danger small" *ngIf="dataUser.get('rfc')?.hasError('pattern') && dataUser.get('rfc')?.touched">
+          *El RFC debe contener solamente números y letras
+        </div>
+      </div>
+
+      <div>
+        <label for="curp" class="form-label">CURP</label>
+        <input type="text" name="curp" id="curp" class="form-control form-control-lg shadow-sm" required
+          formControlName="curp">
+        <div class="text-danger small"
+          *ngIf="dataUser.get('curp')?.hasError('required') && dataUser.get('curp')?.touched">
+          *CURP requerido
+        </div>
+        <div class="text-danger small"
+          *ngIf="dataUser.get('curp')?.hasError('minlength') && dataUser.get('curp')?.touched">
+          *La CURP debe contener 18 caracteres
+        </div>
+        <div class="text-danger small"
+          *ngIf="dataUser.get('curp')?.hasError('maxlength') && dataUser.get('curp')?.touched">
+          *La CURP debe contener 18 caracteres
+        </div>
+        <div class="text-danger small" *ngIf="dataUser.get('curp')?.hasError('pattern') && dataUser.get('curp')?.touched">
+          *La CURP debe contener solamente números y letras
+        </div>
+      </div>
+
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="false" id="foreigner" name="foreigner"
+          formControlName="foreigner">
+        <label class="form-check-label" for="flexCheckDefault">
+          Foráneo
+        </label>
+      </div>
+
+
+
+
+
+      <div class="d-grid gap-4">
+        <input [disabled]="dataUser.invalid" type="submit" value="Registar" class="btn btn-lg btn-primary shadow-sm">
+        <button routerLink="/auth/login" class="btn btn-lg btn-outline-secondary shadow-sm">Cancelar</button>
+      </div>
+
+    </form>
+
+
+  </div>
+
+
+</div>
