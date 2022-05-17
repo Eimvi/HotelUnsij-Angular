@@ -7,6 +7,7 @@ import { environment } from '../../../environments/environment';
 import { User } from '../interfaces/user';
 import { LoginResponse } from '../interfaces/login.interface';
 import { Address } from '../interfaces/address.interface';
+import { DataUser } from '../interfaces/dataUser.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,9 @@ export class ProfileService {
 
   getLink(email: Address){
     return this.http.patch(`${this.URL}auth/request-reset-password`, email);
+  }
+
+  register(dataUser: DataUser){
+    return this.http.post(`${this.URL}auth/register`, dataUser);
   }
 }
