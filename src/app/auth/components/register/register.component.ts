@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DataUser } from '../../interfaces/dataUser.interface';
 import { ProfileService } from '../../services/profile.service';
 import { ConfirmedValidator } from '../../helpers/confirmed.validator';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -63,7 +63,7 @@ export class RegisterComponent implements OnInit {
             Validators.required,
             Validators.minLength(8),
             Validators.maxLength(30),
-            Validators.pattern('(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]).{8,30}')
+            Validators.pattern('(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,30}')
           ]
         ],
         confirmPassword: [
