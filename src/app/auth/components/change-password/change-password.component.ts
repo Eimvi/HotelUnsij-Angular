@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Password } from '../../interfaces/password.interface';
 import { PasswordReset } from '../../interfaces/passwordReset.interface';
-import { PasswordService } from '../../services/password.service'
+import { PasswordService } from '../../services/password.service';
+import { ConfirmedValidator } from '../../helpers/confirmed.validator';
 
 @Component({
   selector: 'app-change-password',
@@ -14,13 +15,18 @@ import { PasswordService } from '../../services/password.service'
 export class ChangePasswordComponent implements OnInit {
   passwordReset!: PasswordReset;
   passwordForm!: FormGroup;
-  expression: boolean = true;
+  token: string = this.route.snapshot.queryParams['resetPasswordToken'];
+  password: string = 'password';
 
   constructor(private fb: FormBuilder,
     private passwordService: PasswordService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.createForm();
+    if(!this.token){
+      this.router.navigateByUrl('/auth/login');
+    }else{
+      this.createForm();
+    }    
   }
 
   // Valida los datos del formulario
@@ -28,6 +34,8 @@ export class ChangePasswordComponent implements OnInit {
     this.passwordForm = this.fb.group({
       newPassword: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(20), Validators.pattern('(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,20}')]],
       confirmPassword: ['', [Validators.required]]
+    }, {
+      validator: ConfirmedValidator('newPassword', 'confirmPassword')
     });
   }
 
@@ -38,36 +46,29 @@ export class ChangePasswordComponent implements OnInit {
       confirmPassword: this.confirmPassword?.value
     };
 
-    this.expression = this.checkPassword(password);
-    if (this.expression) {
-      // Invoca a la función para restablecer la contraseña
-      this.resetPassword(password);
-    } else {
-      this.expression = false;
-    }
-  }
-
-  // Verifica que ambas contraseñas sean iguales
-  checkPassword(password: Password): boolean {
-    if (password.newPassword == password.confirmPassword) {
-      return true;
-    } else {
-      return false;
-    }
+    this.resetPassword(password);
   }
 
   // Invoca al servicio para restablecer la contraseña
   resetPassword(password: Password) {
     const passwordReset: PasswordReset = {
       password: password.newPassword,
-      resetPasswordToken: this.route.snapshot.queryParams['resetPasswordToken']
+      resetPasswordToken: this.token
     }
 
     this.passwordService.changePassword(passwordReset).subscribe(
       resp => {
-        this.router.navigateByUrl('auth/successful-change');
+        this.router.navigateByUrl('/auth/successful-change');
       }
     );
+  }
+
+  hideShowPassword(){
+    if (this.password === 'password') {
+      this.password = 'text';
+    } else {
+      this.password = 'password';
+    }
   }
 
   get newPassword() {
