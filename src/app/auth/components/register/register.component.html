@@ -26,7 +26,7 @@
         </div>
         <div class="text-danger small"
           *ngIf="dataUser.get('name')?.hasError('maxlength')&& dataUser.get('name')?.touched">
-          *El nombre debe tener máximo 20 caracteres
+          *El nombre debe contener máximo 20 caracteres
         </div>
         <div class="text-danger small"
           *ngIf="dataUser.get('name')?.hasError('pattern')&& dataUser.get('name')?.touched">
@@ -44,11 +44,11 @@
         </div>
         <div class="text-danger small"
           *ngIf="dataUser.get('firstSurname')?.hasError('maxlength')&& dataUser.get('firstSurname')?.touched">
-          *El apellido debe tener máximo 15 caracteres
+          *El apellido debe contener máximo 15 caracteres
         </div>
         <div class="text-danger small"
           *ngIf="dataUser.get('firstSurname')?.hasError('pattern')&& dataUser.get('firstSurname')?.touched">
-          *EL apellido no puede contener números ni caracteres especiales
+          *El apellido no puede contener números ni caracteres especiales
         </div>
       </div>
 
@@ -62,11 +62,11 @@
         </div>
         <div class="text-danger small"
           *ngIf="dataUser.get('secondSurname')?.hasError('maxlength')&& dataUser.get('secondSurname')?.touched">
-          *El apellido debe tener máximo 15 caracteres
+          *El apellido debe contener máximo 15 caracteres
         </div>
         <div class="text-danger small"
           *ngIf="dataUser.get('secondSurname')?.hasError('pattern')&& dataUser.get('secondSurname')?.touched">
-          *EL apellido no puede contener números ni caracteres especiales
+          *El apellido no puede contener números ni caracteres especiales
 
         </div>
       </div>
@@ -86,11 +86,11 @@
 
         <div class="text-danger small"
           *ngIf="dataUser.get('email')?.hasError('minlength') && dataUser.get('email')?.touched">
-          *El correo debe tener mínimo 15 caracteres
+          *El correo debe contener mínimo 15 caracteres
         </div>
         <div class="text-danger small"
           *ngIf="dataUser.get('email')?.hasError('maxlength') && dataUser.get('email')?.touched">
-          *El correo debe tener máximo 30 caracteres
+          *El correo debe contener máximo 30 caracteres
         </div>
       </div>
 
@@ -100,11 +100,11 @@
           class="form-control form-control-lg shadow-sm" required formControlName="password">
         <div class="text-danger small"
           *ngIf="dataUser.get('password')?.hasError('required') && dataUser.get('password')?.touched">
-          *Password requerido
+          *Contraseña requerida
         </div>
         <div class="text-danger small"
           *ngIf="dataUser.get('password')?.hasError('pattern') && dataUser.get('password')?.touched">
-          *La contraseña debe tener entre 8 y 30 caracteres, un número, un carácter en mayúsculas y minúsculas y un caracter especial
+          *La contraseña debe contener entre 8 y 30 caracteres, un número, un carácter en mayúsculas y minúsculas y un caracter especial
         </div>
       </div>
 
@@ -114,7 +114,7 @@
           class="form-control form-control-lg shadow-sm" required formControlName="confirmPassword">
         <div class="text-danger small"
           *ngIf="dataUser.get('confirmPassword')?.hasError('required') && dataUser.get('confirmPassword')?.touched">
-          *Password requerido
+          *Contraseña requerida
         </div>
       </div>
 
@@ -136,15 +136,15 @@
         </div>
         <div class="text-danger small"
           *ngIf="dataUser.get('numberPhone')?.hasError('minlength') && dataUser.get('numberPhone')?.touched">
-          *El número telefónico debe tener mínimo 10 caracteres
+          *El número telefónico debe contener mínimo 10 caracteres
         </div>
         <div class="text-danger small"
           *ngIf="dataUser.get('numberPhone')?.hasError('maxlength') && dataUser.get('numberPhone')?.touched">
-          *El número telefónico debe tener maximo 12 caracteres
+          *El número telefónico debe contener máximo 12 caracteres
         </div>
         <div class="text-danger small"
           *ngIf="dataUser.get('numberPhone')?.hasError('pattern') && dataUser.get('numberPhone')?.touched">
-          *El numero telefónico deben ser números
+          *El número telefónico debe contener solamente números
         </div>
       </div>
 
@@ -158,11 +158,11 @@
         </div>
         <div class="text-danger small"
           *ngIf="dataUser.get('address')?.hasError('minlength') && dataUser.get('address')?.touched">
-          *La dirección debe tener mínimo 10 caracteres
+          *La dirección debe contener mínimo 10 caracteres
         </div>
         <div class="text-danger small"
           *ngIf="dataUser.get('address')?.hasError('maxlength') && dataUser.get('address')?.touched">
-          *La dirección debe tener maximo 50 caracteres
+          *La dirección debe contener máximo 50 caracteres
         </div>
       </div>
 
@@ -176,14 +176,14 @@
         </div>
         <div class="text-danger small"
           *ngIf="dataUser.get('rfc')?.hasError('minlength') && dataUser.get('rfc')?.touched">
-          *El RFC debe tener mínimo 12 caracteres
+          *El RFC debe contener mínimo 12 caracteres
         </div>
         <div class="text-danger small"
           *ngIf="dataUser.get('rfc')?.hasError('maxlength') && dataUser.get('rfc')?.touched">
-          *El RFC debe tener maximo 13 caracteres
+          *El RFC debe contener máximo 13 caracteres
         </div>
         <div class="text-danger small" *ngIf="dataUser.get('rfc')?.hasError('pattern') && dataUser.get('rfc')?.touched">
-          *El RFC deben ser números y letras
+          *El RFC debe contener solamente números y letras
         </div>
       </div>
 
@@ -197,14 +197,14 @@
         </div>
         <div class="text-danger small"
           *ngIf="dataUser.get('curp')?.hasError('minlength') && dataUser.get('curp')?.touched">
-          *La CURP debe tener 18 caracteres
+          *La CURP debe contener 18 caracteres
         </div>
         <div class="text-danger small"
           *ngIf="dataUser.get('curp')?.hasError('maxlength') && dataUser.get('curp')?.touched">
-          *La CURP debe tener 18 caracteres
+          *La CURP debe contener 18 caracteres
         </div>
         <div class="text-danger small" *ngIf="dataUser.get('curp')?.hasError('pattern') && dataUser.get('curp')?.touched">
-          *La CURP solo debe tener numeros y letras
+          *La CURP debe contener solamente números y letras
         </div>
       </div>
 
