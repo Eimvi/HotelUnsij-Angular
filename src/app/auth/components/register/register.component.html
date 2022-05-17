@@ -2,7 +2,7 @@
 
   <div class="mx-4 d-flex flex-column min-vh-100- justify-content-center col-sm-6 mx-sm-auto col-lg-3 gap-4">
 
-    <h1 class="text-center display-5 fw-normal">Registar nuevo usuario</h1>
+    <h1 class="text-center display-5 fw-normal">Registrar nuevo usuario</h1>
 
     <form action="" class="d-flex flex-column gap-4 needs-validation css-form" novalidate (submit)="onSubmit()"
       [formGroup]="dataUser">
@@ -10,7 +10,7 @@
       <div class="alert alert-danger text-center" role="alert"
         *ngIf="dataUser.get('confirmPassword')?.hasError('confirmedValidator') && dataUser.get('confirmPassword')?.touched">
         <span>
-          Las contraseñas no coinciden
+          *Las contraseñas no coinciden
         </span>
       </div>
 
@@ -46,7 +46,7 @@
         </div>
         <div class="text-danger small"
           *ngIf="dataUser.get('firstSurname')?.hasError('pattern')&& dataUser.get('firstSurname')?.touched">
-          *El apellido debe solo letras
+          *EL apellido no puede contener números ni caracteres especiales
         </div>
       </div>
 
@@ -64,7 +64,8 @@
         </div>
         <div class="text-danger small"
           *ngIf="dataUser.get('secondSurname')?.hasError('pattern')&& dataUser.get('secondSurname')?.touched">
-          *El apellido debe solo letras
+          *EL apellido no puede contener números ni caracteres especiales
+
         </div>
       </div>
 
@@ -101,8 +102,7 @@
         </div>
         <div class="text-danger small"
           *ngIf="dataUser.get('password')?.hasError('pattern') && dataUser.get('password')?.touched">
-          *La contraseña debe tener entre 8 y 30 caracteres y debe contener un número, un carácter en mayúsculas y
-          minúsculas y un carácter especial
+          *La contraseña debe tener entre 8 y 30 caracteres, un número, un carácter en mayúsculas y minúsculas y un caracter especial
         </div>
       </div>
 
@@ -220,7 +220,7 @@
 
       <div class="d-grid gap-4">
         <input [disabled]="dataUser.invalid" type="submit" value="Registar" class="btn btn-lg btn-primary shadow-sm">
-        <button class="btn btn-lg btn-outline-secondary shadow-sm">Cancelar</button>
+        <button routerLink="/auth/login" class="btn btn-lg btn-outline-secondary shadow-sm">Cancelar</button>
       </div>
 
     </form>
