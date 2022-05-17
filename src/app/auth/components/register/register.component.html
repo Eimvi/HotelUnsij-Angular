@@ -28,7 +28,7 @@
         </div>
         <div class="text-danger small"
           *ngIf="dataUser.get('name')?.hasError('pattern')&& dataUser.get('name')?.touched">
-          *El nombre debe solo letras
+          *El nombre debe contener solo letras
         </div>
       </div>
 
@@ -87,7 +87,7 @@
         </div>
         <div class="text-danger small"
           *ngIf="dataUser.get('email')?.hasError('maxlength') && dataUser.get('email')?.touched">
-          *El correo debe tener máximo 40 caracteres
+          *El correo debe tener máximo 30 caracteres
         </div>
       </div>
 
@@ -101,7 +101,7 @@
         </div>
         <div class="text-danger small"
           *ngIf="dataUser.get('password')?.hasError('pattern') && dataUser.get('password')?.touched">
-          *La contraseña debe tener entre 8 y 15 caracteres y debe contener un número, un carácter en mayúsculas y
+          *La contraseña debe tener entre 8 y 30 caracteres y debe contener un número, un carácter en mayúsculas y
           minúsculas y un carácter especial
         </div>
       </div>
@@ -181,7 +181,7 @@
           *El RFC debe tener maximo 13 caracteres
         </div>
         <div class="text-danger small" *ngIf="dataUser.get('rfc')?.hasError('pattern') && dataUser.get('rfc')?.touched">
-          *El RFC telefónico deben ser números y letras
+          *El RFC deben ser números y letras
         </div>
       </div>
 
