@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DataUser } from '../../interfaces/dataUser.interface';
 import { ProfileService } from '../../services/profile.service';
 import { ConfirmedValidator } from '../../helpers/confirmed.validator';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,7 @@ export class RegisterComponent implements OnInit {
   password: string = 'password';
   confirmPassword: string = 'password';
 
-  constructor(private fb: FormBuilder,private profileService: ProfileService) { }
+  constructor(private fb: FormBuilder,private profileService: ProfileService, private router: Router) { }
 
   ngOnInit(): void {
     this.dataUser = this.fb.group(
@@ -130,7 +131,7 @@ export class RegisterComponent implements OnInit {
     };
     this.profileService.register(dataUser).subscribe(
       resp => {
-        //this.router.navigateByUrl('/auth/register-success');
+        this.router.navigateByUrl('/auth/register-success');
       }
     )
   }
