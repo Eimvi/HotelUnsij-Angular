@@ -1,0 +1,49 @@
+<div class="container my-5">
+  <div class="mx-4 mx-sm-auto d-flex flex-column gap-4 justify-content-center col-sm-7 col-md-6 col-lg-3">
+    <div class="text-center">
+      <img class="img-fluid " width="120" src="../../../../assets/img/user.png" alt="">
+    </div>
+    <h1 class="text-center fs-2 fw-normal text-primary">Mi Perfil</h1>
+    <div class="d-flex flex-column gap-4">
+      <div class="row">
+        <div class="col">
+          <table class="table">
+            <tbody>
+              <tr>
+                <th scope="row">Nombre</th>
+                <td>{{profile?.name}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Apellidos</th>
+                <td>{{profile?.lastName}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Dirección</th>
+                <td>{{profile?.address}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Teléfono</th>
+                <td>{{profile?.numberPhone}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Correo</th>
+                <td>{{profile?.email}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <a class="text-decoration-none d-flex  flex-row justify-content-end w-full" routerLink="/auth/update-password">Cambiar contraseña</a>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-lg btn-outline-primary d-block shadow-sm" routerLink="/menu">Regresar</button>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
