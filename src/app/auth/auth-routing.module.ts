@@ -20,7 +20,7 @@ const routes: Routes = [
     path: 'link-successful/:email', component: LinkSendingSuccessfulComponent
   },
   {
-    path: 'change-password', component: ChangePasswordComponent
+    path: 'reset-password', component: ChangePasswordComponent
   },
   {
     path: 'get-link', component: GetLinkComponent

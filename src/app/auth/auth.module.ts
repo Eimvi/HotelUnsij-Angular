@@ -17,7 +17,9 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
     GetLinkComponent,
     ChangePasswordComponent,
     LinkSendingSuccessfulComponent,
-    RegisterComponent
+    RegisterComponent,
+    LinkSendingSuccessfulComponent,
+    ChangePasswordComponent
   ],
   imports: [
     CommonModule,
