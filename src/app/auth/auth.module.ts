@@ -10,6 +10,7 @@ import { LinkSendingSuccessfulComponent } from './components/link-sending-succes
 import { RegisterComponent } from './components/register/register.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { RegisterSuccessfulComponent } from './components/register-successful/register-successful.component';
+import { ActivatedAccountComponent } from './components/activated-account/activated-account.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { RegisterSuccessfulComponent } from './components/register-successful/re
     RegisterComponent,
     LinkSendingSuccessfulComponent,
     ChangePasswordComponent,
-    RegisterSuccessfulComponent
+    RegisterSuccessfulComponent,
+    ActivatedAccountComponent
   ],
   imports: [
     CommonModule,

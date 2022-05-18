@@ -10,6 +10,7 @@ import { User } from '../interfaces/user';
 import { LoginResponseBody, Profile } from '../interfaces/login.interface';
 import { Address } from '../interfaces/address.interface';
 import { DataUser } from '../interfaces/dataUser.interface';
+import { ActivatedAccount } from '../interfaces/activatedAccount.interface';
 
 
 @Injectable({
@@ -48,6 +49,11 @@ export class ProfileService {
 
   register(dataUser: DataUser){
     return this.http.post(`${this.URL}auth/register`, dataUser);
+  }
+
+  activatedAccount(data: ActivatedAccount){
+    const query = { code: data.code, id: data.id };
+    return this.http.get<void>(`${this.URL}auth/activate-account`, { params: query });
   }
 
   checkJwt(){

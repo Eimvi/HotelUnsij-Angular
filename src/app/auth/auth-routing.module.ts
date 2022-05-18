@@ -9,6 +9,7 @@ import { LinkSendingSuccessfulComponent } from './components/link-sending-succes
 import { NotFoundComponent } from '../pages/not-found/not-found.component';
 import { RegisterComponent } from './components/register/register.component';
 import { RegisterSuccessfulComponent } from './components/register-successful/register-successful.component';
+import { ActivatedAccountComponent } from './components/activated-account/activated-account.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,9 @@ const routes: Routes = [
   },
   {
     path: 'register-successful', component: RegisterSuccessfulComponent
+  },
+  {
+    path: 'activate-account', component: ActivatedAccountComponent
   },
   {
     path: '',
