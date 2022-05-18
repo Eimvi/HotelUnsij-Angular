@@ -58,7 +58,10 @@ export class ProfileService {
           this.profile = resp.body;
         }
       ), map(() => true),
-      catchError( () => of(false) )
+      catchError( () => {
+        this.logOut();
+        return of(false)
+      } )
     );
   }
 
