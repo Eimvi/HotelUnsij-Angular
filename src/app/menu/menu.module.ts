@@ -3,15 +3,18 @@ import { CommonModule } from '@angular/common';
 
 import { MenuRoutingModule } from './menu-routing.module';
 import { MenuComponent } from './menu.component';
-
+import { ChambermaidMenuComponent } from './components/chambermaid-menu/chambermaid-menu.component';
+import { ChambermaidActivitiesComponent } from './components/chambermaid-activities/chambermaid-activities.component';
 
 @NgModule({
   declarations: [
-    MenuComponent
+    MenuComponent,
+    ChambermaidMenuComponent,
+    ChambermaidActivitiesComponent
   ],
   imports: [
     CommonModule,
-    MenuRoutingModule
+    MenuRoutingModule,
   ]
 })
 export class MenuModule { }
