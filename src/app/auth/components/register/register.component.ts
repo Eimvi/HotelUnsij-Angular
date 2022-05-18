@@ -131,7 +131,7 @@ export class RegisterComponent implements OnInit {
     };
     this.profileService.register(dataUser).subscribe(
       resp => {
-        this.router.navigateByUrl('/auth/register-success');
+        this.router.navigateByUrl('/auth/register-successful');
       }
     )
   }
