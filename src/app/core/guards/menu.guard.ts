@@ -1,31 +1,33 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, CanLoad, Route, Router, RouterStateSnapshot, UrlSegment } from '@angular/router';
+import { tap } from 'rxjs/operators';
+import { ProfileService } from '../../auth/services/profile.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MenuGuard implements CanActivate, CanLoad {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private profileService: ProfileService) { }
 
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): boolean {
-    const jwToken: string = localStorage.getItem('token')!;
-    if (jwToken) {
-      return true;
-    }
-    this.router.navigateByUrl('/auth/login');
-    return false;
+    state: RouterStateSnapshot) {
+      return this.profileService.checkJwt().pipe(
+        tap(valid => {
+          if(!valid)
+            this.router.navigateByUrl('/auth/login');
+        })
+      );
   }
   canLoad(
     route: Route,
-    segments: UrlSegment[]): boolean {
-    const jwToken: string = localStorage.getItem('token')!;
-    if (jwToken) {
-      return true;
-    }
-    this.router.navigateByUrl('/auth/login');
-    return false;
+    segments: UrlSegment[]) {
+      return this.profileService.checkJwt().pipe(
+        tap(valid => {
+          if(!valid)
+            this.router.navigateByUrl('/auth/login');
+        })
+      );
   }
 }

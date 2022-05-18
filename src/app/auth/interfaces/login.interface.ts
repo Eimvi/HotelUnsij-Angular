@@ -1,18 +1,25 @@
-export interface LoginResponse{
+export interface LoginResponseBody {
+  status: number;
+  message: string;
+  body: Profile;
+}
+
+export interface Profile {
   id: number;
   name: string;
-  lastName: string;
+  firstSurname: string;
+  secondSurname: string;
   email: string;
   numberPhone: string;
   address: string;
   foreigner: boolean;
   rfc: string;
   accessToken: string;
+  role: Role;
   workday: Workday;
-  maid: Maid;
 }
 
-interface Maid {
+interface Role {
   jobPosition: string;
 }
 

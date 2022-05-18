@@ -29,7 +29,8 @@ export class LoginComponent implements OnInit {
     const user: User = this.user.getRawValue();
     this.userService.login(user).subscribe(
       data => {
-        this.router.navigateByUrl('/menu')});
+        const route: string = this.userService.getNameRoute()
+        this.router.navigateByUrl(`/menu/${route}`)});
   }
 
   hideorShowPassword(){

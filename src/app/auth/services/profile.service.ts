@@ -1,14 +1,16 @@
 
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { tap} from 'rxjs/operators';
+import { of } from 'rxjs';
+import { catchError, map, tap} from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
 
 import { User } from '../interfaces/user';
-import { LoginResponse } from '../interfaces/login.interface';
+import { LoginResponseBody, Profile } from '../interfaces/login.interface';
 import { Address } from '../interfaces/address.interface';
 import { DataUser } from '../interfaces/dataUser.interface';
+
 
 @Injectable({
   providedIn: 'root'
@@ -16,16 +18,16 @@ import { DataUser } from '../interfaces/dataUser.interface';
 export class ProfileService {
 
   private readonly URL: string = environment.URL;
-  private profile! : LoginResponse;
+  private profile! : Profile;
 
   constructor(private http: HttpClient, private router: Router) { }
 
   login(user: User){
-    return this.http.post<LoginResponse>(`${this.URL}auth/login`,user).pipe(
+    return this.http.post<LoginResponseBody>(`${this.URL}auth/login`,user).pipe(
       tap(
       (resp)=>{
-        localStorage.setItem('token',resp.accessToken);
-        this.profile = resp;
+        localStorage.setItem('token',resp.body.accessToken);
+        this.profile = resp.body;
       }
     )
     );
@@ -46,5 +48,31 @@ export class ProfileService {
 
   register(dataUser: DataUser){
     return this.http.post(`${this.URL}auth/register`, dataUser);
+  }
+
+  checkJwt(){
+    return this.http.get<LoginResponseBody>(`${this.URL}auth/renew-jwt`).pipe(
+      tap(
+        (resp)=>{
+          localStorage.setItem('token',resp.body.accessToken);
+          this.profile = resp.body;
+        }
+      ), map(() => true),
+      catchError( () => {
+        this.logOut();
+        return of(false)
+      } )
+    );
+  }
+
+  getNameRoute(){
+    let route = this.profile?.role.jobPosition;
+    if(route == 'camarista')
+      return 'maid';
+    if(route == 'encargado')
+      return 'attendad';
+    if(route == 'ama de llaves')
+      return 'housekeeper';
+    return route;
   }
 }

@@ -9,14 +9,13 @@ import { ChambermaidActivitiesService } from '../../services/chambermaid-activit
 })
 export class ChambermaidActivitiesComponent implements OnInit {
 
-  Activities!: Array<Activity>;
+  activities!: Array<Activity>;
 
   constructor(private chambermaidActivitiesService: ChambermaidActivitiesService) { }
 
   ngOnInit(): void {
     this.chambermaidActivitiesService.getActivities().subscribe(data => {
-      this.Activities = data;
-      console.log(this.Activities);
+      this.activities = data;
     })
   }
 

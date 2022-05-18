@@ -14,8 +14,12 @@
                 <td>{{profile?.name}}</td>
               </tr>
               <tr>
-                <th scope="row">Apellidos</th>
-                <td>{{profile?.lastName}}</td>
+                <th scope="row">Apellido Paterno</th>
+                <td>{{profile?.firstSurname}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Apellido Materno</th>
+                <td>{{profile?.secondSurname}}</td>
               </tr>
               <tr>
                 <th scope="row">Dirección</th>
@@ -35,7 +39,7 @@
         </div>
       </div>
     </div>
-    <button class="btn btn-lg btn-outline-primary d-block shadow-sm" routerLink="/menu">Regresar</button>
+    <button class="btn btn-lg btn-outline-primary d-block shadow-sm" routerLink="/menu/{{route}}">Regresar</button>
   </div>
 </div>
 
