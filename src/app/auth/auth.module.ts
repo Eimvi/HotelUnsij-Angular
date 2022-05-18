@@ -7,6 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SuccessfulChangeComponent } from './components/successful-change/successful-change.component';
 import { GetLinkComponent } from './components/get-link/get-link.component';
 import { LinkSendingSuccessfulComponent } from './components/link-sending-successful/link-sending-successful.component';
+import { RegisterComponent } from './components/register/register.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 
 @NgModule({
@@ -14,6 +15,9 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
     LoginComponent,
     SuccessfulChangeComponent,
     GetLinkComponent,
+    ChangePasswordComponent,
+    LinkSendingSuccessfulComponent,
+    RegisterComponent,
     LinkSendingSuccessfulComponent,
     ChangePasswordComponent
   ],
