@@ -12,12 +12,6 @@ export class ChambermaidActivitiesService {
 
   private readonly URL: string = environment.URL;
 
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
-  }
-
   constructor(private httpClient: HttpClient) { }
 
   getActivities(): Observable<Activity[]> {
