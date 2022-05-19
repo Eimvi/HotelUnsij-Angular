@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
             Validators.required,
             Validators.minLength(1),
             Validators.maxLength(20),
-            Validators.pattern('^[a-zA-Z_ ]*$')
+            Validators.pattern('^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')
           ]
         ],
         firstSurname: [
@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
             Validators.required,
             Validators.minLength(1),
             Validators.maxLength(15),
-            Validators.pattern('^[a-zA-Z_ ]*$')
+            Validators.pattern('^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')
           ]
         ],
         secondSurname: [
@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit {
             Validators.required,
             Validators.minLength(1),
             Validators.maxLength(15),
-            Validators.pattern('^[a-zA-Z_ ]*$')
+            Validators.pattern('^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$')
           ]
         ],
         email: [
