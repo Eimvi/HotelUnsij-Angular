@@ -2,7 +2,7 @@
 
   <div class="mx-4 d-flex flex-column min-vh-100- justify-content-center col-sm-6 mx-sm-auto col-lg-3 gap-4">
     <div class="text-center">
-     <img src="../../../../assets/img/register.svg" class="img-fluid" width="158" alt="">
+      <img src="../../../../assets/img/register.svg" class="img-fluid" width="158" alt="">
     </div>
     <h1 class="text-center display-5 fw-normal">Registrar nuevo usuario</h1>
 
@@ -54,8 +54,8 @@
 
       <div>
         <label for="secondSurname" class="form-label">Apellido Materno</label>
-        <input type="text" name="secondSurname" id="secondSurname" class="form-control form-control-lg shadow-sm" required
-          formControlName="secondSurname">
+        <input type="text" name="secondSurname" id="secondSurname" class="form-control form-control-lg shadow-sm"
+          required formControlName="secondSurname">
         <div class="text-danger small"
           *ngIf="dataUser.get('secondSurname')?.hasError('required') && dataUser.get('secondSurname')?.touched">
           *Apellido requerido
@@ -104,7 +104,8 @@
         </div>
         <div class="text-danger small"
           *ngIf="dataUser.get('password')?.hasError('pattern') && dataUser.get('password')?.touched">
-          *La contraseña debe contener entre 8 y 30 caracteres, un número, un carácter en mayúsculas y minúsculas y un caracter especial
+          *La contraseña debe contener entre 8 y 30 caracteres, un número, un caracter en mayúsculas y minúsculas y un
+          caracter especial
         </div>
       </div>
 
@@ -203,7 +204,8 @@
           *ngIf="dataUser.get('curp')?.hasError('maxlength') && dataUser.get('curp')?.touched">
           *La CURP debe contener 18 caracteres
         </div>
-        <div class="text-danger small" *ngIf="dataUser.get('curp')?.hasError('pattern') && dataUser.get('curp')?.touched">
+        <div class="text-danger small"
+          *ngIf="dataUser.get('curp')?.hasError('pattern') && dataUser.get('curp')?.touched">
           *La CURP debe contener solamente números y letras
         </div>
       </div>
@@ -216,19 +218,11 @@
         </label>
       </div>
 
-
-
-
-
       <div class="d-grid gap-4">
-        <input [disabled]="dataUser.invalid" type="submit" value="Registar" class="btn btn-lg btn-primary shadow-sm">
+        <input [disabled]="dataUser.invalid" type="submit" value="Registrar" class="btn btn-lg btn-primary shadow-sm">
         <button routerLink="/auth/login" class="btn btn-lg btn-outline-secondary shadow-sm">Cancelar</button>
       </div>
 
     </form>
-
-
   </div>
-
-
 </div>
