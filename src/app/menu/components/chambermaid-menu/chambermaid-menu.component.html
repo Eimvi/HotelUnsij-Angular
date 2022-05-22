@@ -21,7 +21,9 @@
                 aria-describedby="basic-addon1">
         </div>
 
-        <app-chambermaid-activities></app-chambermaid-activities>
-        
+        <app-chambermaid-activities [activities]="activities"></app-chambermaid-activities>
+        <div class="d-flex justify-content-center">
+          <app-pagination [pages]="pageSize" (pageSelected)="pageSelected($event)"></app-pagination>
+        </div>
     </div>
 </div>
