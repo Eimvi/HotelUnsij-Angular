@@ -1,9 +1,9 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
-import { Activity, BodyGetActivities } from '../interfaces/activity.interface';
 import { map } from 'rxjs/operators';
+import { Activity, BodyGetActivities } from '../interfaces/activity.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +14,9 @@ export class ChambermaidActivitiesService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getActivities(): Observable<Activity[]> {
-    return this.httpClient.get<BodyGetActivities>(`${this.URL}maid`).pipe(
+  getActivities(page: number = 1, keyword: string = ''): Observable<Activity[]> {
+    const query = { page, keyword };
+    return this.httpClient.get<BodyGetActivities>(`${this.URL}maid`, { params: query }).pipe(
       map((response) => {
         return response.body;
       })
