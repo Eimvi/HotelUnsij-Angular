@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Password } from '../../interfaces/password.interface';
 import { PasswordReset } from '../../interfaces/passwordReset.interface';
 import { PasswordService } from '../../services/password.service';
-import { ConfirmedValidator } from '../../helpers/confirmed.validator';
+import { checkPasswords } from '../../helpers/confirmed.validator';
 
 @Component({
   selector: 'app-change-password',
@@ -26,7 +26,7 @@ export class ChangePasswordComponent implements OnInit {
       this.router.navigateByUrl('/auth/login');
     }else{
       this.createForm();
-    }    
+    }
   }
 
   // Valida los datos del formulario
@@ -35,7 +35,7 @@ export class ChangePasswordComponent implements OnInit {
       newPassword: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(20), Validators.pattern('(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,20}')]],
       confirmPassword: ['', [Validators.required]]
     }, {
-      validator: ConfirmedValidator('newPassword', 'confirmPassword')
+      validators: checkPasswords
     });
   }
 

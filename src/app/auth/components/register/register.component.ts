@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
 import { DataUser } from '../../interfaces/dataUser.interface';
 import { ProfileService } from '../../services/profile.service';
-import { ConfirmedValidator } from '../../helpers/confirmed.validator';
-import { Router } from '@angular/router';
+import { checkPasswords } from '../../helpers/confirmed.validator';
 
 @Component({
   selector: 'app-register',
@@ -21,97 +22,45 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.dataUser = this.fb.group(
       {
-        name: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(1),
-            Validators.maxLength(20),
-            Validators.pattern('^[a-zA-Z_ ]*$')
-          ]
-        ],
-        firstSurname: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(1),
-            Validators.maxLength(15),
-            Validators.pattern('^[a-zA-Z_ ]*$')
-          ]
-        ],
-        secondSurname: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(1),
-            Validators.maxLength(15),
-            Validators.pattern('^[a-zA-Z_ ]*$')
-          ]
-        ],
-        email: [
-          '',
-          [
-            Validators.required,
-            Validators.email,
-            Validators.minLength(15),
-            Validators.maxLength(30)
-          ]
-        ],
-        password: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(8),
-            Validators.maxLength(30),
-            Validators.pattern('(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,30}')
-          ]
-        ],
-        confirmPassword: [
-          '',
-          [
-            Validators.required
-          ]
-        ],
-        numberPhone: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(10),
-            Validators.maxLength(12),
-            Validators.pattern('^[0-9]+$')
-          ]
-        ],
-        address: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(10),
-            Validators.maxLength(50)
-          ]
-        ],
-        foreigner: [
-          false
-        ],
-        rfc: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(12),
-            Validators.maxLength(13),
-            Validators.pattern('^[a-zA-Z0-9]*$')
-          ]
-        ],
-        curp: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(18),
-            Validators.maxLength(18),
-            Validators.pattern('^[a-zA-Z0-9]*$')
-          ]
-        ]
+        name: ['', [
+          Validators.required, Validators.minLength(1),
+          Validators.maxLength(20), Validators.pattern('^[a-zA-Z_ ]*$')
+        ]],
+        firstSurname: ['', [
+          Validators.required, Validators.minLength(1),
+          Validators.maxLength(15), Validators.pattern('^[a-zA-Z_ ]*$')
+        ]],
+        secondSurname: ['', [
+          Validators.required, Validators.minLength(1),
+          Validators.maxLength(15), Validators.pattern('^[a-zA-Z_ ]*$')
+        ]],
+        email: ['', [
+          Validators.required, Validators.email,
+          Validators.minLength(15), Validators.maxLength(30)
+        ]],
+        password: ['', [
+          Validators.required, Validators.minLength(8),
+          Validators.maxLength(30), Validators.pattern('(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,30}')
+        ]],
+        confirmPassword: ['', [Validators.required]],
+        numberPhone: ['', [
+          Validators.required, Validators.minLength(10),
+          Validators.maxLength(12), Validators.pattern('^[0-9]+$')
+        ]],
+        address: ['', [
+          Validators.required, Validators.minLength(10),
+          Validators.maxLength(50)]],
+        foreigner: [false],
+        rfc: ['', [
+          Validators.required, Validators.minLength(12),
+          Validators.maxLength(13), Validators.pattern('^[a-zA-Z0-9]*$')
+        ]],
+        curp: ['',[
+          Validators.required, Validators.minLength(18),
+          Validators.maxLength(18), Validators.pattern('^[a-zA-Z0-9]*$')
+        ]]
       },
-      { validator: ConfirmedValidator('password', 'confirmPassword') }
+      { validators: checkPasswords }
     );
   }
 

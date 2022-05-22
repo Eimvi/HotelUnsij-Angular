@@ -1,6 +1,7 @@
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Observable, throwError } from 'rxjs';
 import { catchError, finalize, tap } from 'rxjs/operators';
 import { LoadingService } from 'src/app/shared/services/loading.service';
@@ -10,7 +11,7 @@ import { LoadingService } from 'src/app/shared/services/loading.service';
 })
 export class InterceptorAuthService implements HttpInterceptor {
 
-  constructor(private router: Router, private loadingService: LoadingService) { }
+  constructor(private router: Router, private loadingService: LoadingService, private toastService: ToastrService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this.loadingService.show();
@@ -39,7 +40,10 @@ export class InterceptorAuthService implements HttpInterceptor {
         }
       }),
       finalize(() => this.loadingService.hide()),
-      catchError(this.errorResponse),
+      catchError(resp => {
+        this.toastService.error(`${resp.error.message} 😅`);
+        return this.errorResponse(resp);
+      }),
       );
   }
 
