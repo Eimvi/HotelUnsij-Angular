@@ -5,14 +5,18 @@ import { MenuComponent } from './menu.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
 import { MenuGuard } from '../core/guards/menu.guard';
 import { MenuChildGuard } from '../core/guards/menu-child.guard';
+import { PreviousReportComponent } from './components/previous-report/previous-report.component';
 
 const routes: Routes = [
   {
     path: '', component: MenuComponent, canActivate: [MenuGuard],
     children: [
       {
-        path:'maid', component: ChambermaidMenuComponent, canActivateChild: [MenuChildGuard]
+        path: 'maid', component: ChambermaidMenuComponent, canActivateChild: [MenuChildGuard]
       },
+      {
+        path: 'previous-report', component: PreviousReportComponent, canActivateChild: [MenuChildGuard]
+      }
     ]
   },
   {
