@@ -17,7 +17,7 @@
         </nav>
       </div>
       <div class="d-flex flex-column gap-4">
-        <button class="btn btn-primary btn-lg" routerLink="/menu/maid/reports/previous-report">Reporte previo</button>
+        <button class="btn btn-primary btn-lg" routerLink="/menu/maid/reports/previous-report" [disabled]="disabledPrevious" [queryParams]="{id}">Reporte previo</button>
         <button class="btn btn-primary btn-lg" routerLink="/menu/maid/reports/posterior-report" [disabled]="disabledPosterior">Reporte posterior</button>
         <button class="btn btn-primary btn-lg" routerLink="/menu/maid" [disabled]="disabledFinish" (click)="onSubmit()">Enviar</button>
       </div>
