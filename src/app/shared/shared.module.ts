@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MenuRoutingModule } from '../menu/menu-routing.module';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { VideoCaptureComponent } from './components/video-capture/video-capture.component';
 import { SearchComponent } from './components/search/search.component';
 
 
@@ -11,6 +12,7 @@ import { SearchComponent } from './components/search/search.component';
   declarations: [
     NavbarComponent,
     PaginationComponent,
+    VideoCaptureComponent,
     SearchComponent
   ],
   imports: [
@@ -21,6 +23,7 @@ import { SearchComponent } from './components/search/search.component';
   exports: [
     NavbarComponent,
     PaginationComponent,
+    VideoCaptureComponent,
     SearchComponent
   ]
 })

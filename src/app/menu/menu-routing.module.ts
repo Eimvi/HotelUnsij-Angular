@@ -5,6 +5,7 @@ import { MenuComponent } from './menu.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
 import { MenuGuard } from '../core/guards/menu.guard';
 import { MenuChildGuard } from '../core/guards/menu-child.guard';
+import { VideoFileComponent } from './components/video-file/video-file.component';
 import { PreviousReportComponent } from './components/previous-report/previous-report.component';
 import { ReportsComponent } from './components/reports/reports.component';
 
@@ -25,6 +26,9 @@ const routes: Routes = [
       },
       {
         path: 'reports/previous-report', component: PreviousReportComponent, canActivateChild: [MenuChildGuard]
+      },
+      {
+        path:'reports/video', component: VideoFileComponent, canActivateChild: [MenuChildGuard]
       },
       {
         path: 'my-profile', component: MyProfileComponent, canActivateChild: [MenuChildGuard]
