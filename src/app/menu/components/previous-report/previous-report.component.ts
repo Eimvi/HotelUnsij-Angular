@@ -32,7 +32,7 @@ export class PreviousReportComponent implements OnInit {
 
     this.previousReport = this.fb.group({
       description: ['', [Validators.maxLength(100)]],
-      dirtLevel: [0]
+      dirtLevel: [1]
     });
   }
 
@@ -41,6 +41,8 @@ export class PreviousReportComponent implements OnInit {
       description: this.previousReport.get('description')?.value,
       dirtLevel: this.previousReport.get('dirtLevel')?.value
     };
+
+    console.log(previousReport)
 
     let formData: FormData = new FormData();
     formData.append("description", previousReport.description);

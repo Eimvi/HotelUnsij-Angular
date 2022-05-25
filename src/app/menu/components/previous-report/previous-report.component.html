@@ -1,4 +1,4 @@
-<div class="container my-5" >
+<div class="container my-5">
   <div class="mx-4 mx-sm-auto d-flex flex-column gap-4 justify-content-center col-sm-7 col-md-6 col-lg-4 lg:p-x-6">
 
     <h1 class="text-center fs-2 fw-normal text-primary m-0">Reporte previo</h1>
@@ -20,7 +20,8 @@
 
       <div>
         <label for="video" class="form-label">Estado de amenidades y blancos</label>
-        <button class="btn btn-outline-primary" routerLink="menu/maid/reports/video"><i class="bi bi-camera-video-fill"></i> Tomar video</button>
+        <button class="btn btn-outline-primary" routerLink="menu/maid/reports/video"><i
+            class="bi bi-camera-video-fill"></i> Tomar video</button>
       </div>
       <div>
         <label for="description" class="form-label">Desperfectos o faltantes</label>
@@ -42,15 +43,15 @@
       </div>
 
       <p>
-        <label for="dirtLevel" class="form-label">Nivel de suciedad: <label id="value"></label></label>
-        <input type="range" class="form-range" id="dirtLevel" value="0" min="0" max="5" step="1"
-          oninput="document.getElementById('value').innerHTML = this.value" />
-      <label>(1: Limpio, 5: Muy sucio)</label>
+        <label for="dirtLevel" class="form-label">Nivel de suciedad: <label id="value">{{previousReport.get('dirtLevel')?.value}}</label></label>
+        <input type="range" class="form-range" formControlName="dirtLevel" id="dirtLevel" value="1" min="1" max="5" step="1" />
+        <label>(1: Limpio, 5: Muy sucio)</label>
       </p>
 
       <div class="d-grid gap-4">
-        <input  type="submit" value="Guardar" class="btn btn-lg btn-primary shadow-sm">
-        <button routerLink="/menu/maid/reports" [queryParams]="{id}" class="btn btn-lg btn-outline-secondary shadow-sm" >Cancelar</button>
+        <input type="submit" value="Guardar" class="btn btn-lg btn-primary shadow-sm">
+        <button routerLink="/menu/maid/reports" [queryParams]="{id}"
+          class="btn btn-lg btn-outline-secondary shadow-sm">Cancelar</button>
       </div>
 
     </form>
