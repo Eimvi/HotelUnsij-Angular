@@ -20,7 +20,6 @@ export class ReportsComponent implements OnInit {
   constructor(private route:ActivatedRoute, private chambermaidReport: ChambermaidReportsService, private router: Router) { }
 
   ngOnInit(): void {
-    console.log(typeof(this.id));
     const regexp = new RegExp('^[0-9]+$')
     if(this.id ==null || !regexp.test(this.id)){
 
