@@ -1,4 +1,3 @@
-import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PreviousReport } from '../../interfaces/previousReport.interface';
@@ -9,12 +8,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-previous-report',
   templateUrl: './previous-report.component.html',
-  styleUrls: ['./previous-report.component.scss'],
-  providers: [DatePipe]
+  styleUrls: ['./previous-report.component.scss']
 })
 export class PreviousReportComponent implements OnInit {
   previousReport!: FormGroup;
-  datePipe = new DatePipe('en-US');
   myDate = new Date();
   activities!: Array<Activity>;
   id: string = this.route.snapshot.queryParams['id'];
@@ -23,11 +20,9 @@ export class PreviousReportComponent implements OnInit {
     private fb: FormBuilder,
     private ChambermaidActivitiesService: ChambermaidActivitiesService,
     private route: ActivatedRoute,
-    private router: Router
-  ) {
+    private router: Router,
 
-    this.datePipe.transform(this.myDate, 'EEEE, MMMM d, y');
-  }
+  ) {}
 
   ngOnInit(): void {
     const regexp = new RegExp('^[0-9]+$')
@@ -53,7 +48,7 @@ export class PreviousReportComponent implements OnInit {
 
     this.ChambermaidActivitiesService.previousReportCreate(formData, this.id).subscribe(
       resp => {
-        this.router.navigateByUrl('/menu/maid/reports');
+        this.router.navigate(['/menu/maid/reports'],{ queryParams: {id:this.id}});
       }
     )
   }

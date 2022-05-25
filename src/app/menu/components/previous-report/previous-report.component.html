@@ -8,7 +8,7 @@
       aria-label="breadcrumb">
       <ol class="breadcrumb mb-0">
         <li class="breadcrumb-item"><a routerLink="/menu/maid">Actividades</a></li>
-        <li class="breadcrumb-item"><a routerLink="/menu/maid/reports">Reportes</a></li>
+        <li class="breadcrumb-item"><a routerLink="/menu/maid/reports" [queryParams]="{id}">Reportes</a></li>
         <li class="breadcrumb-item active" aria-current="page">Reporte previo</li>
       </ol>
     </nav>
@@ -20,7 +20,7 @@
 
       <div>
         <label for="video" class="form-label">Estado de amenidades y blancos</label>
-        <button class="btn btn-outline-primary"><i class="bi bi-camera-video-fill"></i> Tomar video</button>
+        <button class="btn btn-outline-primary" routerLink="menu/maid/reports/video"><i class="bi bi-camera-video-fill"></i> Tomar video</button>
       </div>
       <div>
         <label for="description" class="form-label">Desperfectos o faltantes</label>
@@ -50,7 +50,7 @@
 
       <div class="d-grid gap-4">
         <input  type="submit" value="Guardar" class="btn btn-lg btn-primary shadow-sm">
-        <button routerLink="" class="btn btn-lg btn-outline-secondary shadow-sm" [routerLink]="['/menu/maid/reports']">Cancelar</button>
+        <button routerLink="/menu/maid/reports" [queryParams]="{id}" class="btn btn-lg btn-outline-secondary shadow-sm" >Cancelar</button>
       </div>
 
     </form>
