@@ -27,13 +27,13 @@ export class PreviousReportComponent implements OnInit {
   ngOnInit(): void {
     const regexp = new RegExp('^[0-9]+$')
     if (this.id == null || !regexp.test(this.id)) {
-      this.router.navigateByUrl('/menu/maid');
+      this.router.navigate(['/menu/maid'], {queryParams: { page: 1 }});
+    }else{
+      this.previousReport = this.fb.group({
+        description: ['', [Validators.maxLength(100)]],
+        dirtLevel: [1]
+      });
     }
-
-    this.previousReport = this.fb.group({
-      description: ['', [Validators.maxLength(100)]],
-      dirtLevel: [1]
-    });
   }
 
   submitForm() {
@@ -48,7 +48,7 @@ export class PreviousReportComponent implements OnInit {
 
     this.ChambermaidActivitiesService.previousReportCreate(formData, this.id).subscribe(
       resp => {
-        this.router.navigate(['/menu/maid/reports'],{ queryParams: {id:this.id}});
+        this.router.navigate(['/menu/reports'],{ queryParams: {id:this.id}});
       }
     )
   }
