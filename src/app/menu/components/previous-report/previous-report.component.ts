@@ -42,8 +42,6 @@ export class PreviousReportComponent implements OnInit {
       dirtLevel: this.previousReport.get('dirtLevel')?.value
     };
 
-    console.log(previousReport)
-
     let formData: FormData = new FormData();
     formData.append("description", previousReport.description);
     formData.append("dirtLevel", previousReport.dirtLevel);
