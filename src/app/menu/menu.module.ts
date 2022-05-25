@@ -7,13 +7,15 @@ import { MenuComponent } from './menu.component';
 import { ChambermaidMenuComponent } from './components/chambermaid-menu/chambermaid-menu.component';
 import { ChambermaidActivitiesComponent } from './components/chambermaid-activities/chambermaid-activities.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
+import { ReportsComponent } from './components/reports/reports.component';
 
 @NgModule({
   declarations: [
     MenuComponent,
     ChambermaidMenuComponent,
     ChambermaidActivitiesComponent,
-    MyProfileComponent
+    MyProfileComponent,
+    ReportsComponent
   ],
   imports: [
     CommonModule,

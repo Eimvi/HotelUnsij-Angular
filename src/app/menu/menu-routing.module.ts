@@ -5,6 +5,7 @@ import { MenuComponent } from './menu.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
 import { MenuGuard } from '../core/guards/menu.guard';
 import { MenuChildGuard } from '../core/guards/menu-child.guard';
+import { ReportsComponent } from './components/reports/reports.component';
 
 const routes: Routes = [
   {
@@ -13,10 +14,13 @@ const routes: Routes = [
       {
         path:'maid', component: ChambermaidMenuComponent, canActivateChild: [MenuChildGuard]
       },
+      {
+        path: 'maid/reports', component: ReportsComponent, canActivateChild: [MenuChildGuard]
+      },
+      {
+        path: 'my-profile', component: MyProfileComponent, canActivateChild: [MenuChildGuard]
+      }
     ]
-  },
-  {
-    path: 'my-profile', component: MyProfileComponent, canActivate: [MenuGuard]
   }
 ];
 
