@@ -10,6 +10,9 @@ const routes: Routes = [
     path: 'menu', loadChildren: () => import('./menu/menu.module').then(m => m.MenuModule)
   },
   {
+    path: 'housekeeper', loadChildren: () => import('./housekeeper/housekeeper.module').then(m => m.HousekeeperModule)
+  },
+  {
     path: '',
     redirectTo: 'auth',
     pathMatch: 'full'
