@@ -23,17 +23,17 @@ export class ReportsComponent implements OnInit {
     const regexp = new RegExp('^[0-9]+$')
     if(this.id ==null || !regexp.test(this.id)){
 
-      this.router.navigateByUrl('/menu/maid');
+      this.router.navigate(['/menu/maid'], {queryParams: { page: 1 }} );
+    }else{
+      this.chambermaidReport.getReport(this.id).subscribe(data => {
+        this.report=data;
+
+        let statusPrevious = this.report.reports.previousReport.active;
+        let statusPost = this.report.reports.posteriorReport.active;
+
+        this.checkStatusReports(statusPrevious,statusPost);
+      })
     }
-
-    this.chambermaidReport.getReport(this.id).subscribe(data => {
-      this.report=data;
-
-      let statusPrevious = this.report.reports.previousReport.active;
-      let statusPost = this.report.reports.posteriorReport.active;
-
-      this.checkStatusReports(statusPrevious,statusPost);
-    })
   }
 
   checkStatusReports(statusPrev: boolean, statusPost: boolean){
@@ -54,7 +54,7 @@ export class ReportsComponent implements OnInit {
   onSubmit(){
     this.chambermaidReport.updatedStatusActivity(this.report).subscribe(
       resp => {
-        this.router.navigate([`/menu/maid/`]);
+        this.router.navigate(['/menu/maid/'], {queryParams: { page: 1 }});
       }
     )
   }

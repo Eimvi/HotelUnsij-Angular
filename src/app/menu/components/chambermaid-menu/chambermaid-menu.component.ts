@@ -63,7 +63,7 @@ export class ChambermaidMenuComponent implements OnInit {
   }
 
   alertMessagePage(): void{
-    this.toastService.warning(`La página ${this.actualPage} no existe. 😥`);
+    this.toastService.warning('La página solicitada no existe. 😥');
     this.pageSelected(1);
   }
 

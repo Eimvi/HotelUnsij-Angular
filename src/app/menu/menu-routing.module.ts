@@ -10,16 +10,21 @@ import { ReportsComponent } from './components/reports/reports.component';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'maid',
+    pathMatch: 'full',
+  },
+  {
     path: '', component: MenuComponent, canActivate: [MenuGuard],
     children: [
       {
         path: 'maid', component: ChambermaidMenuComponent, canActivateChild: [MenuChildGuard]
       },
       {
-        path: 'previous-report', component: PreviousReportComponent, canActivateChild: [MenuChildGuard]
+        path: 'reports', component: ReportsComponent, canActivateChild: [MenuChildGuard],
       },
       {
-        path: 'maid/reports', component: ReportsComponent, canActivateChild: [MenuChildGuard]
+        path: 'reports/previous-report', component: PreviousReportComponent, canActivateChild: [MenuChildGuard]
       },
       {
         path: 'my-profile', component: MyProfileComponent, canActivateChild: [MenuChildGuard]
