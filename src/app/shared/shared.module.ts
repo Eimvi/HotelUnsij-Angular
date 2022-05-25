@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MenuRoutingModule } from '../menu/menu-routing.module';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { VideoCaptureComponent } from './components/video-capture/video-capture.component';
 
 
 @NgModule({
   declarations: [
     NavbarComponent,
-    PaginationComponent
+    PaginationComponent,
+    VideoCaptureComponent
   ],
   imports: [
     CommonModule,
@@ -16,7 +18,8 @@ import { PaginationComponent } from './components/pagination/pagination.componen
   ],
   exports: [
     NavbarComponent,
-    PaginationComponent
+    PaginationComponent,
+    VideoCaptureComponent
   ]
 })
 export class SharedModule { }
