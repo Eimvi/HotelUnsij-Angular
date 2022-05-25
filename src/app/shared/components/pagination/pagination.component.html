@@ -1,0 +1,19 @@
+<nav aria-label="Page navigation">
+  <ul class="pagination">
+    <li class="page-item" [ngClass]="{disabled : isActive == 0}" (click)="previousPage()">
+      <a class="page-link" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <div *ngFor="let item of pages; let i = index">
+      <li class="page-item" (click)="active(i)" [ngClass]="{'active': isActive == i}">
+        <a class="page-link">{{i + 1}}</a>
+      </li>
+    </div>
+    <li class="page-item" [ngClass]="{disabled : pages.length - 1 == isActive}" (click)="nextPage()">
+      <a class="page-link" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
