@@ -10,30 +10,46 @@ import { Report } from '../../interfaces/report.interface';
 })
 export class ReportsComponent implements OnInit {
 
-  id: number = this.route.snapshot.queryParams['id'];
+  id: string = this.route.snapshot.queryParams['id'];
   report!: Report;
   statusPosteriorReport!:boolean;
+  disabledPrevious: boolean=true;
   disabledPosterior : boolean = true;
   disabledFinish : boolean = true;
 
   constructor(private route:ActivatedRoute, private chambermaidReport: ChambermaidReportsService, private router: Router) { }
 
   ngOnInit(): void {
+    console.log(typeof(this.id));
+    const regexp = new RegExp('^[0-9]+$')
+    if(this.id ==null || !regexp.test(this.id)){
+
+      this.router.navigateByUrl('/menu/maid');
+    }
+
     this.chambermaidReport.getReport(this.id).subscribe(data => {
       this.report=data;
-      console.log(this.report);
+
       let statusPrevious = this.report.reports.previousReport.active;
       let statusPost = this.report.reports.posteriorReport.active;
 
-      if(statusPrevious){
-        this.disabledPosterior = false;
-      }
-
-      if(statusPrevious && statusPost){
-        this.disabledFinish = false;
-      }
-
+      this.checkStatusReports(statusPrevious,statusPost);
     })
+  }
+
+  checkStatusReports(statusPrev: boolean, statusPost: boolean){
+
+    if(!statusPrev){
+      this.disabledPrevious = false;
+      this.disabledPosterior = true;
+    }else if(statusPost){
+      this.disabledFinish = false;
+      this.disabledPrevious= true;
+      this.disabledPosterior = true;
+    }else{
+      this.disabledPrevious=true;
+      this.disabledPosterior=false;
+    }
   }
 
   onSubmit(){
