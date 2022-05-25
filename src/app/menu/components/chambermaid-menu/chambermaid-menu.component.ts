@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Activity } from '../../interfaces/activity.interface';
 import { ChambermaidActivitiesService } from '../../services/chambermaid-activities.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-chambermaid-menu',
@@ -15,7 +16,9 @@ export class ChambermaidMenuComponent implements OnInit {
   actualPage: number = this.route.snapshot.queryParams['page'];
   searchTxt: string = '';
 
-  constructor(private router: Router, private route: ActivatedRoute, private chambermaidActivitiesService: ChambermaidActivitiesService) { }
+  constructor(private router: Router, private route: ActivatedRoute,
+    private toastService: ToastrService,
+    private chambermaidActivitiesService: ChambermaidActivitiesService) { }
 
   ngOnInit(): void {
     this.getActivities();
@@ -34,16 +37,34 @@ export class ChambermaidMenuComponent implements OnInit {
 
 
   getActivities(): void {
-    this.chambermaidActivitiesService.getActivities(this.actualPage, this.searchTxt)
-      .subscribe(data => {
-        this.activities = data.list;
-        this.pageSize.length = data.page_count;
-    })
+    if (this.actualPage > 0) {
+      this.chambermaidActivitiesService.getActivities(this.actualPage, this.searchTxt)
+        .subscribe(data => {
+          this.activities = data.list;
+          this.pageSize.length = data.page_count;
+          // Verify query page exists
+          if(data.page_count) this.verifyPageExists(data.page_count);
+        });
+    }else{
+      this.alertMessagePage();
+    }
+
   }
 
-  filterActivities(searchTxt: string){
+  filterActivities(searchTxt: string): void {
     this.searchTxt = searchTxt;
-    this.getActivities();
+    this.pageSelected(1);
+  }
+
+  verifyPageExists(page: number): void {
+    if (this.actualPage > page) {
+      this.alertMessagePage();
+    }
+  }
+
+  alertMessagePage(): void{
+    this.toastService.warning(`La página ${this.actualPage} no existe. 😥`);
+    this.pageSelected(1);
   }
 
 }
