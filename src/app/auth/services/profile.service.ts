@@ -5,6 +5,7 @@ import { of } from 'rxjs';
 import { catchError, map, tap} from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 import { User } from '../interfaces/user';
 import { LoginResponseBody, Profile } from '../interfaces/login.interface';
@@ -21,7 +22,7 @@ export class ProfileService {
   private readonly URL: string = environment.URL;
   private profile! : Profile;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private toastService: ToastrService) { }
 
   login(user: User){
     return this.http.post<LoginResponseBody>(`${this.URL}auth/login`,user).pipe(
@@ -29,6 +30,7 @@ export class ProfileService {
       (resp)=>{
         localStorage.setItem('token',resp.body.accessToken);
         this.profile = resp.body;
+        this.toastService.success(`Bienvenido ${resp.body.name}. 😊`);
       }
     )
     );
@@ -65,20 +67,17 @@ export class ProfileService {
         }
       ), map(() => true),
       catchError( () => {
-        this.logOut();
-        return of(false)
+        localStorage.removeItem('token');
+        return of(false);
       } )
     );
   }
 
   getNameRoute(){
-    let route = this.profile?.role.jobPosition;
-    if(route == 'camarista')
-      return 'maid';
-    if(route == 'encargado')
-      return 'attendad';
-    if(route == 'ama de llaves')
-      return 'housekeeper';
+    const route: string = this.profile?.role.jobPosition;
+    if(route == 'camarista') return 'maid';
+    if(route == 'encargado') return 'attendad';
+    if(route == 'ama de llaves') return 'housekeeper';
     return route;
   }
 }

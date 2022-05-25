@@ -1,7 +1,15 @@
 export interface BodyGetActivities {
   status: number;
   message: string;
-  body: Activity[];
+  body: Body;
+}
+
+export interface Body {
+  list: Activity[];
+  count: number;
+  page: number;
+  page_count: number;
+  page_size: number;
 }
 
 export interface Activity {
@@ -10,6 +18,6 @@ export interface Activity {
   title: string;
   description: string;
   status: string;
-  hourStart?: string;
-  hourEnd?: any;
+  hourStart?: any;
+  hourEnd?: string;
 }

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MenuRoutingModule } from './menu-routing.module';
 import { MenuComponent } from './menu.component';
@@ -8,7 +9,7 @@ import { ChambermaidMenuComponent } from './components/chambermaid-menu/chamberm
 import { ChambermaidActivitiesComponent } from './components/chambermaid-activities/chambermaid-activities.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
 import { PreviousReportComponent } from './components/previous-report/previous-report.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReportsComponent } from './components/reports/reports.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ChambermaidMenuComponent,
     ChambermaidActivitiesComponent,
     MyProfileComponent,
-    PreviousReportComponent
+    PreviousReportComponent,
+    ReportsComponent
   ],
   imports: [
     CommonModule,

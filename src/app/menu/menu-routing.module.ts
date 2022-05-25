@@ -6,6 +6,7 @@ import { MyProfileComponent } from './components/my-profile/my-profile.component
 import { MenuGuard } from '../core/guards/menu.guard';
 import { MenuChildGuard } from '../core/guards/menu-child.guard';
 import { PreviousReportComponent } from './components/previous-report/previous-report.component';
+import { ReportsComponent } from './components/reports/reports.component';
 
 const routes: Routes = [
   {
@@ -16,11 +17,14 @@ const routes: Routes = [
       },
       {
         path: 'previous-report', component: PreviousReportComponent, canActivateChild: [MenuChildGuard]
+      },
+      {
+        path: 'maid/reports', component: ReportsComponent, canActivateChild: [MenuChildGuard]
+      },
+      {
+        path: 'my-profile', component: MyProfileComponent, canActivateChild: [MenuChildGuard]
       }
     ]
-  },
-  {
-    path: 'my-profile', component: MyProfileComponent, canActivate: [MenuGuard]
   }
 ];
 
