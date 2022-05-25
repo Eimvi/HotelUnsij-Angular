@@ -13,6 +13,7 @@ export class ChambermaidMenuComponent implements OnInit {
   activities!: Array<Activity>;
   pageSize: Array<number> = [];
   actualPage: number = this.route.snapshot.queryParams['page'];
+  searchTxt: string = '';
 
   constructor(private router: Router, private route: ActivatedRoute, private chambermaidActivitiesService: ChambermaidActivitiesService) { }
 
@@ -33,9 +34,16 @@ export class ChambermaidMenuComponent implements OnInit {
 
 
   getActivities(): void {
-    this.chambermaidActivitiesService.getActivities(this.actualPage).subscribe(data => {
-      this.activities = data;
+    this.chambermaidActivitiesService.getActivities(this.actualPage, this.searchTxt)
+      .subscribe(data => {
+        this.activities = data.list;
+        this.pageSize.length = data.page_count;
     })
+  }
+
+  filterActivities(searchTxt: string){
+    this.searchTxt = searchTxt;
+    this.getActivities();
   }
 
 }
