@@ -1,0 +1,7 @@
+.css-form textarea.ng-invalid.ng-touched {
+  border : 1px solid red;
+}
+
+.css-form textarea.ng-valid.ng-touched {
+  border :  1px solid green;
+}
