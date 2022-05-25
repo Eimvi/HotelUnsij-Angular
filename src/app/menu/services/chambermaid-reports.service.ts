@@ -15,7 +15,7 @@ export class ChambermaidReportsService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getReport(id:number): Observable<Report> {
+  getReport(id:string): Observable<Report> {
     return this.httpClient.get<BodyGetReport>(`${this.URL}maid/activity/${id}`).pipe(
       map((response) => {
         return response.body;
