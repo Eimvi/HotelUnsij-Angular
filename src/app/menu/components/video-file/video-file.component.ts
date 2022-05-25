@@ -17,6 +17,8 @@ export class VideoFileComponent implements OnInit {
 
   getVideo(dato: any) {
     const data: Blob = dato;
-    this.videoCaptureService.sendVideo(data);
+    if(data instanceof Blob){
+      this.videoCaptureService.sendVideo(data);
+    }
   }
 }
