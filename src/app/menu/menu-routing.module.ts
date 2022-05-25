@@ -5,6 +5,7 @@ import { MenuComponent } from './menu.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
 import { MenuGuard } from '../core/guards/menu.guard';
 import { MenuChildGuard } from '../core/guards/menu-child.guard';
+import { VideoFileComponent } from './components/video-file/video-file.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,9 @@ const routes: Routes = [
     children: [
       {
         path:'maid', component: ChambermaidMenuComponent, canActivateChild: [MenuChildGuard]
+      },
+      {
+        path:'maid/reports/video', component: VideoFileComponent, canActivateChild: [MenuChildGuard]
       },
     ]
   },
