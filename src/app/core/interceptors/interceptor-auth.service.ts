@@ -33,8 +33,8 @@ export class InterceptorAuthService implements HttpInterceptor {
     return next.handle( reqClone ).pipe(
       tap({
         error: (res) => {
-          if(res.error.statusCode == 401){
-            this.router.navigate(['auth']);
+          if(res.error.status == 401){
+            this.router.navigate(['/auth']);
             localStorage.removeItem('token');
           }
         }
