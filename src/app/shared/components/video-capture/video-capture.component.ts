@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, Renderer2, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Renderer2, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { timer, Observable } from 'rxjs';
 import { scan, takeWhile } from 'rxjs/operators';
 declare var MediaRecorder: any;
@@ -7,7 +7,7 @@ declare var MediaRecorder: any;
   templateUrl: './video-capture.component.html',
   styleUrls: ['./video-capture.component.scss']
 })
-export class VideoCaptureComponent implements OnInit {
+export class VideoCaptureComponent implements OnInit, OnDestroy {
   @ViewChild('recordedVideo') recordVideoElementRef!: ElementRef;
   @ViewChild('video') videoElementRef!: ElementRef;
   @ViewChild('info') info!: ElementRef;
@@ -23,6 +23,7 @@ export class VideoCaptureComponent implements OnInit {
   timer$!: Observable<number>;
   var: boolean = false;
 
+  videoSaved: boolean = false;
   constructor(private rederer2: Renderer2) { }
 
   async ngOnInit() {
@@ -76,6 +77,7 @@ export class VideoCaptureComponent implements OnInit {
     this.isRecording = !this.isRecording;
     this.onDataAvailableEvent();
     this.onStopRecordingEvent();
+    this.videoSaved = false;
   }
 
   stopRecording() {
@@ -119,8 +121,9 @@ export class VideoCaptureComponent implements OnInit {
         const videoBuffer = new Blob(this.recordedBlobs, {
           type: 'video/webm'
         });
-        this.downloadUrl = window.URL.createObjectURL(videoBuffer);        
+        this.downloadUrl = window.URL.createObjectURL(videoBuffer);
         this.recordVideoElement.src = this.downloadUrl;
+        this.videoSaved = true;
         this.video.emit(videoBuffer);
       };
     } catch (error) {
@@ -131,15 +134,26 @@ export class VideoCaptureComponent implements OnInit {
   timer() {
     this.timer$ = timer(0, 1000).pipe(
       scan((acc) => --acc, 16),
-      takeWhile((x) => {      
+      takeWhile((x) => {
         if (x <= 0) {
           if(!this.var){
-            this.stopRecording(); 
-          }          
-        } 
+            this.stopRecording();
+          }
+        }
         return x >= 0;
       })
     )
     this.var = false;
+  }
+
+  ngOnDestroy(): void {
+    if(this.stream) {
+      this.stream.getTracks().forEach(function(track) {
+        if (track.readyState == 'live') {
+            track.stop();
+        }
+      });
+    }
+
   }
 }
