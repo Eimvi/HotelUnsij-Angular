@@ -20,7 +20,7 @@
 
       <div>
         <label for="video" class="form-label">Estado de amenidades y blancos</label>
-        <button class="btn btn-outline-primary" routerLink="/menu/reports/video" [queryParams]="{id}"><i
+        <button class="btn btn-outline-primary" routerLink="/menu/reports/video" [queryParams]="{id, type: 'previous'}"><i
             class="bi bi-camera-video-fill"></i> Tomar video</button>
             <div class="text-danger small" *ngIf="videoError">
               *El video es requerido.
@@ -38,7 +38,10 @@
       </div>
 
       <div>
-        <button class="btn btn-outline-primary "><i class="bi bi-camera-fill" routerLink="camera" [queryParams]="{id}"></i> Tomar fotos (máximo 5)</button>
+        <button type="button" class="btn btn-outline-primary" routerLink="/menu/reports/camera" [queryParams]="{id, type: 'previous'}"><i class="bi bi-camera-fill"></i> Tomar fotos (máximo 5)</button>
+        <div class="text-danger small" *ngIf="imageError">
+          *Mínimo una imagen es requerida.
+        </div>
       </div>
 
       <div>

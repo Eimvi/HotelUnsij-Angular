@@ -8,13 +8,13 @@
             <li class="breadcrumb-item"><a>Inicio</a></li>
             <li class="breadcrumb-item" aria-current="page"><a [routerLink]="['/menu/maid']" [queryParams]="{page: '1'}">Actividades</a></li>
             <li class="breadcrumb-item" aria-current="page"><a [routerLink]="['/menu/reports']" [queryParams]="{id}">Reportes</a></li>
-            <li class="breadcrumb-item" aria-current="page"><a [routerLink]="['/menu/reports/previous-report']" [queryParams]="{id}">Reporte Previo</a></li>
+            <li class="breadcrumb-item" aria-current="page"><a [routerLink]="['/menu/reports/' + typeReport]" [queryParams]="{id}">{{ typeReport | typeReport }}</a></li>
             <li class="breadcrumb-item active" aria-current="page"><a>Video</a></li>
         </ol>
     </nav>
 
     <div>
-        <a href="" [routerLink]="['/menu/reports/previous-report']" [queryParams]="{id}" class="text-primary text-decoration-none"><i class="bi bi-arrow-left"></i> Regresar</a>
+        <a href="" [routerLink]="['/menu/reports/' + typeReport]" [queryParams]="{id}" class="text-primary text-decoration-none"><i class="bi bi-arrow-left"></i> Regresar</a>
     </div>
 
     <app-video-capture (video)="getVideo($event)"></app-video-capture>

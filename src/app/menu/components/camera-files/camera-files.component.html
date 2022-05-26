@@ -1,0 +1,21 @@
+<div class="container d-flex flex-column gap-4 my-5">
+
+  <h1 class="text-center fs-2 fw-normal text-primary m-0">Captura de imágenes</h1>
+
+  <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='currentColor' class='bi bi-chevron-right' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E&#34;);"
+      aria-label="breadcrumb">
+      <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a>Inicio</a></li>
+          <li class="breadcrumb-item" aria-current="page"><a [routerLink]="['/menu/maid']" [queryParams]="{page: '1'}">Actividades</a></li>
+          <li class="breadcrumb-item" aria-current="page"><a [routerLink]="['/menu/reports']" [queryParams]="{id}">Reportes</a></li>
+          <li class="breadcrumb-item" aria-current="page"><a [routerLink]="['/menu/reports/' + typeReport]" [queryParams]="{id}">{{ typeReport | typeReport }}</a></li>
+          <li class="breadcrumb-item active" aria-current="page"><a>Cámara</a></li>
+      </ol>
+  </nav>
+
+  <div>
+      <a [routerLink]="['/menu/reports/' + typeReport]" [queryParams]="{id}" class="text-primary text-decoration-none"><i class="bi bi-arrow-left"></i> Regresar</a>
+  </div>
+
+  <app-camera-capture (imagesSend)="saveImages($event)"></app-camera-capture>
+</div>
