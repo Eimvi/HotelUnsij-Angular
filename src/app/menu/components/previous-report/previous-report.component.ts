@@ -17,6 +17,7 @@ export class PreviousReportComponent implements OnInit {
   myDate = new Date();
   activities!: Array<Activity>;
   videoError: boolean = false;
+  imageError: boolean = false;
   id: string = this.route.snapshot.queryParams['id'];
 
   previousReport: FormGroup = this.fb.group({
@@ -49,17 +50,26 @@ export class PreviousReportComponent implements OnInit {
     };
     let formData: FormData = new FormData();
     const video = this.videoService.getVideo();
+    const images = this.videoService.getImages();
     if(video){
       this.videoError = false;
-      formData.append("description", previousReport.description);
-      formData.append("dirtLevel", previousReport.dirtLevel);
-      formData.append("video", video);
-
-      this.ChambermaidActivitiesService.previousReportCreate(formData, this.id).subscribe(
-        resp => {
-          this.router.navigate(['/menu/reports'],{ queryParams: {id:this.id}});
+      if(images.length > 0){
+        this.imageError = false;
+        formData.append("description", previousReport.description);
+        formData.append("dirtLevel", previousReport.dirtLevel);
+        formData.append("video", video);
+        for(let image of images){
+          formData.append("images", image);
         }
-      )
+        this.ChambermaidActivitiesService.previousReportCreate(formData, this.id).subscribe(
+          resp => {
+            this.router.navigate(['/menu/reports'],{ queryParams: {id:this.id}});
+          }
+        )
+      }else{
+        this.imageError = true;
+      }
+
     }else{
       this.videoError = true;
     }
