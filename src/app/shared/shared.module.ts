@@ -6,6 +6,7 @@ import { MenuRoutingModule } from '../menu/menu-routing.module';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { VideoCaptureComponent } from './components/video-capture/video-capture.component';
 import { SearchComponent } from './components/search/search.component';
+import { HousekeeperRoutingModule } from '../housekeeper/housekeeper-routing.module';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { SearchComponent } from './components/search/search.component';
   imports: [
     CommonModule,
     FormsModule,
-    MenuRoutingModule
+    MenuRoutingModule,
+    HousekeeperRoutingModule
   ],
   exports: [
     NavbarComponent,
