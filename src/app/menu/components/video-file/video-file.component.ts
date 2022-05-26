@@ -12,6 +12,7 @@ export class VideoFileComponent implements OnInit {
 
   MyBlob = new Blob(['test text'], {type : 'text/plain'});
   id: string = this.route.snapshot.queryParams['id'];
+  typeReport: string = this.route.snapshot.queryParams['type'];
   constructor(private router: Router, private route: ActivatedRoute,
     private toastService: ToastrService, private videoCaptureService: VideoCaptureService) { }
 
@@ -20,6 +21,17 @@ export class VideoFileComponent implements OnInit {
     if (this.id == null || !regexp.test(this.id)) {
       this.toastService.warning('La página solicitada no existe. 😥');
       this.router.navigate(['/menu/maid'], {queryParams: { page: 1 }});
+    }else{
+      this.verifyTypeReport();
+    }
+  }
+
+  verifyTypeReport(): void{
+    if(this.typeReport == 'previous') this.typeReport = 'previous-report';
+    else if(this.typeReport == 'posterior') this.typeReport = 'posterior-report';
+    else {
+      this.toastService.warning('No existe el tipo de reporte. 😥');
+      this.router.navigate(['/menu/reports/'], {queryParams: { id: this.id }});
     }
   }
 
