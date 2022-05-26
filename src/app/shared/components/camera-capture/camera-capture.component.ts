@@ -61,7 +61,10 @@ export class CameraCaptureComponent implements OnInit {
 
   deleteImage(i: number): void{
     this.images.splice(i,1);
-    this.imagesLengthError = false;
+    this.imagesSaved = false;
+    if(this.images.length == 0){
+      this.imagesSend.emit(this.images);
+    }
   }
 
   saveImages(): void {
