@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { HousekeeperRoutingModule } from './housekeeper-routing.module';
 import { HousekeeperComponent } from './housekeeper.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { HousekeeperComponent } from './housekeeper.component';
   ],
   imports: [
     CommonModule,
-    HousekeeperRoutingModule
+    HousekeeperRoutingModule,
+    SharedModule
   ]
 })
 export class HousekeeperModule { }
