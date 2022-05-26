@@ -20,8 +20,11 @@
 
       <div>
         <label for="video" class="form-label">Estado de amenidades y blancos</label>
-        <button class="btn btn-outline-primary" routerLink="video" [queryParams]="{id}"><i
+        <button class="btn btn-outline-primary" routerLink="/menu/reports/video" [queryParams]="{id}"><i
             class="bi bi-camera-video-fill"></i> Tomar video</button>
+            <div class="text-danger small" *ngIf="videoError">
+              *El video es requerido.
+            </div>
       </div>
       <div>
         <label for="description" class="form-label">Desperfectos o faltantes</label>

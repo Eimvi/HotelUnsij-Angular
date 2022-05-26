@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ChambermaidReportsService } from '../../services/chambermaid-reports.service';
 import { Report } from '../../interfaces/report.interface';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-reports',
@@ -17,12 +18,13 @@ export class ReportsComponent implements OnInit {
   disabledPosterior : boolean = true;
   disabledFinish : boolean = true;
 
-  constructor(private route:ActivatedRoute, private chambermaidReport: ChambermaidReportsService, private router: Router) { }
+  constructor(private route:ActivatedRoute, private router: Router,
+              private toastService: ToastrService,private chambermaidReport: ChambermaidReportsService) { }
 
   ngOnInit(): void {
     const regexp = new RegExp('^[0-9]+$')
     if(this.id ==null || !regexp.test(this.id)){
-
+      this.toastService.warning('La página solicitada no existe. 😥');
       this.router.navigate(['/menu/maid'], {queryParams: { page: 1 }} );
     }else{
       this.chambermaidReport.getReport(this.id).subscribe(data => {
