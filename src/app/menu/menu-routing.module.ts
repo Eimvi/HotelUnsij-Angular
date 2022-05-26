@@ -8,6 +8,7 @@ import { MenuChildGuard } from '../core/guards/menu-child.guard';
 import { VideoFileComponent } from './components/video-file/video-file.component';
 import { PreviousReportComponent } from './components/previous-report/previous-report.component';
 import { ReportsComponent } from './components/reports/reports.component';
+import { CameraFilesComponent } from './components/camera-files/camera-files.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,9 @@ const routes: Routes = [
       },
       {
         path:'reports/video', component: VideoFileComponent, canActivateChild: [MenuChildGuard]
+      },
+      {
+        path:'reports/camera', component: CameraFilesComponent, canActivateChild: [MenuChildGuard]
       },
       {
         path: 'my-profile', component: MyProfileComponent, canActivateChild: [MenuChildGuard]
