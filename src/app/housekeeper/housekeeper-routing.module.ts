@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes, CanActivate } from '@angular/router';
+import { RouterModule, Routes} from '@angular/router';
 import { HousekeeperComponent } from './housekeeper.component';
 import { HousekeeperModulesComponent } from './components/housekeeper-modules/housekeeper-modules.component';
 import { MenuGuard } from '../core/guards/menu.guard';
