@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
 import { WebcamImage } from 'ngx-webcam';
 
 @Injectable({
