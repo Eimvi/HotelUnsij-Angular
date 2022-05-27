@@ -12,6 +12,7 @@ import { LoginResponseBody, Profile } from '../interfaces/login.interface';
 import { Address } from '../interfaces/address.interface';
 import { DataUser } from '../interfaces/dataUser.interface';
 import { ActivatedAccount } from '../interfaces/activatedAccount.interface';
+import { PasswordReset } from '../interfaces/passwordReset.interface';
 
 
 @Injectable({
@@ -56,6 +57,9 @@ export class ProfileService {
   activatedAccount(data: ActivatedAccount){
     const query = { code: data.code, id: data.id };
     return this.http.get<void>(`${this.URL}auth/activate-account`, { params: query });
+  }
+  changePassword(passwordReset: PasswordReset){
+    return this.http.patch(`${this.URL}auth/reset-password`, passwordReset);
   }
 
   checkJwt(){

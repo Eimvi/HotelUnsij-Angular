@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Password } from '../../interfaces/password.interface';
 import { PasswordReset } from '../../interfaces/passwordReset.interface';
-import { PasswordService } from '../../services/password.service';
 import { checkPasswords } from '../../helpers/confirmed.validator';
+import { ProfileService } from '../../services/profile.service';
 
 @Component({
   selector: 'app-change-password',
@@ -19,7 +19,7 @@ export class ChangePasswordComponent implements OnInit {
   password: string = 'password';
 
   constructor(private fb: FormBuilder,
-    private passwordService: PasswordService, private router: Router, private route: ActivatedRoute) { }
+    private profileService: ProfileService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     if(!this.token){
@@ -56,7 +56,7 @@ export class ChangePasswordComponent implements OnInit {
       resetPasswordToken: this.token
     }
 
-    this.passwordService.changePassword(passwordReset).subscribe(
+    this.profileService.changePassword(passwordReset).subscribe(
       resp => {
         this.router.navigateByUrl('/auth/successful-change');
       }

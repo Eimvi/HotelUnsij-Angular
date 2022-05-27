@@ -6,15 +6,15 @@
       aria-label="breadcrumb">
       <ol class="breadcrumb mb-0">
           <li class="breadcrumb-item"><a>Inicio</a></li>
-          <li class="breadcrumb-item" aria-current="page"><a [routerLink]="['/menu/maid']" [queryParams]="{page: '1'}">Actividades</a></li>
-          <li class="breadcrumb-item" aria-current="page"><a [routerLink]="['/menu/reports']" [queryParams]="{id}">Reportes</a></li>
-          <li class="breadcrumb-item" aria-current="page"><a [routerLink]="['/menu/reports/' + typeReport]" [queryParams]="{id}">{{ typeReport | typeReport }}</a></li>
+          <li class="breadcrumb-item" aria-current="page"><a [routerLink]="['/maid/menu']" [queryParams]="{page: '1'}">Actividades</a></li>
+          <li class="breadcrumb-item" aria-current="page"><a [routerLink]="['/maid/reports']" [queryParams]="{id}">Reportes</a></li>
+          <li class="breadcrumb-item" aria-current="page"><a [routerLink]="['/maid/reports/' + typeReport]" [queryParams]="{id}">{{ typeReport | typeReport }}</a></li>
           <li class="breadcrumb-item active" aria-current="page"><a>Cámara</a></li>
       </ol>
   </nav>
 
   <div>
-      <a [routerLink]="['/menu/reports/' + typeReport]" [queryParams]="{id}" class="text-primary text-decoration-none"><i class="bi bi-arrow-left"></i> Regresar</a>
+      <a [routerLink]="['/maid/reports/' + typeReport]" [queryParams]="{id}" class="text-primary text-decoration-none"><i class="bi bi-arrow-left"></i> Regresar</a>
   </div>
 
   <app-camera-capture (imagesSend)="saveImages($event)"></app-camera-capture>

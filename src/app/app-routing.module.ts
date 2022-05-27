@@ -7,7 +7,7 @@ const routes: Routes = [
     path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
   {
-    path: 'menu', loadChildren: () => import('./menu/menu.module').then(m => m.MenuModule)
+    path: 'maid', loadChildren: () => import('./menu/menu.module').then(m => m.MenuModule)
   },
   {
     path: 'housekeeper', loadChildren: () => import('./housekeeper/housekeeper.module').then(m => m.HousekeeperModule)

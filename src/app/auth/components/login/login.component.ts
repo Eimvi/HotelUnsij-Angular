@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     this.userService.login(user).subscribe(
       data => {
         const route: string = this.userService.getNameRoute();
-        this.router.navigate([`/menu/${route}`], { queryParams: { page: 1 } });
+        this.router.navigate([`/${route}`], { queryParams: { page: 1 } });
       });
 
   }

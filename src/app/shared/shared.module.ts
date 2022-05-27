@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {WebcamModule} from 'ngx-webcam';
+import { RouterModule } from '@angular/router';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
@@ -23,6 +24,7 @@ import { TypeReportPipe } from './pipes/type-report.pipe';
   imports: [
     CommonModule,
     FormsModule,
+    RouterModule,
     WebcamModule
   ],
   exports: [
