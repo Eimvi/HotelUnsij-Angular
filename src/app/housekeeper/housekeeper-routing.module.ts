@@ -7,10 +7,15 @@ import { MenuChildGuard } from '../core/guards/menu-child.guard';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'menu',
+    pathMatch: 'full'
+  },
+  {
     path: '', component: HousekeeperComponent, canActivate: [MenuGuard],
     children: [
       {
-          path: 'housekeeper', component: HousekeeperModulesComponent, canActivateChild: [MenuChildGuard]
+          path: 'menu', component: HousekeeperModulesComponent, canActivateChild: [MenuChildGuard]
       }
     ]
   }

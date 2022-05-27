@@ -15,12 +15,12 @@
 
     <p>Fecha de inspección: {{myDate | date: 'EEEE, MMMM d, y' }}</p>
 
-    <form action="" class="d-flex flex-column gap-4 needs-validation css-form" [formGroup]="previousReport"
+    <form class="d-flex flex-column gap-4 needs-validation css-form" [formGroup]="previousReport"
       (ngSubmit)="submitForm()">
 
       <div>
         <label for="video" class="form-label">Estado de amenidades y blancos</label>
-        <button class="btn btn-outline-primary" routerLink="/menu/reports/video" [queryParams]="{id, type: 'previous'}"><i
+        <button class="btn btn-outline-primary" routerLink="/maid/reports/video" [queryParams]="{id, type: 'previous'}"><i
             class="bi bi-camera-video-fill"></i> Tomar video</button>
             <div class="text-danger small" *ngIf="videoError">
               *El video es requerido.
@@ -38,14 +38,14 @@
       </div>
 
       <div>
-        <button type="button" class="btn btn-outline-primary" routerLink="/menu/reports/camera" [queryParams]="{id, type: 'previous'}"><i class="bi bi-camera-fill"></i> Tomar fotos (máximo 5)</button>
+        <button type="button" class="btn btn-outline-primary" routerLink="/maid/reports/camera" [queryParams]="{id, type: 'previous'}"><i class="bi bi-camera-fill"></i> Tomar fotos (máximo 5)</button>
         <div class="text-danger small" *ngIf="imageError">
           *Mínimo una imagen es requerida.
         </div>
       </div>
 
       <div>
-        <button class="btn btn-outline-primary "><i class="bi bi-eye-fill"></i> Ver fotos</button>
+        <button type="button" class="btn btn-outline-primary "><i class="bi bi-eye-fill"></i> Ver fotos</button>
       </div>
 
       <p>
@@ -56,7 +56,7 @@
 
       <div class="d-grid gap-4">
         <input type="submit" value="Guardar" class="btn btn-lg btn-primary shadow-sm">
-        <button routerLink="/menu/reports" [queryParams]="{id}"
+        <button routerLink="/maid/reports" [queryParams]="{id}"
           class="btn btn-lg btn-outline-secondary shadow-sm">Cancelar</button>
       </div>
 

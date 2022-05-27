@@ -20,7 +20,7 @@ export class CameraFilesComponent implements OnInit {
     const regexp = new RegExp('^[0-9]+$');
     if (this.id == null || !regexp.test(this.id)) {
       this.toastService.warning('La página solicitada no existe. 😥');
-      this.router.navigate(['/menu/maid'], {queryParams: { page: 1 }});
+      this.router.navigate(['/maid/menu'], {queryParams: { page: 1 }});
     }else{
       this.verifyTypeReport();
     }
@@ -31,7 +31,7 @@ export class CameraFilesComponent implements OnInit {
     else if(this.typeReport == 'posterior') this.typeReport = 'posterior-report';
     else {
       this.toastService.warning('No existe el tipo de reporte. 😥');
-      this.router.navigate(['/menu/reports/'], {queryParams: { id: this.id }});
+      this.router.navigate(['/maid/reports/'], {queryParams: { id: this.id }});
     }
   }
 

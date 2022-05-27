@@ -13,14 +13,14 @@ import { CameraFilesComponent } from './components/camera-files/camera-files.com
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'maid',
+    redirectTo: 'menu',
     pathMatch: 'full',
   },
   {
     path: '', component: MenuComponent, canActivate: [MenuGuard],
     children: [
       {
-        path: 'maid', component: ChambermaidMenuComponent, canActivateChild: [MenuChildGuard]
+        path: 'menu', component: ChambermaidMenuComponent, canActivateChild: [MenuChildGuard]
       },
       {
         path: 'reports', component: ReportsComponent, canActivateChild: [MenuChildGuard],

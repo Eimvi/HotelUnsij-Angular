@@ -25,7 +25,7 @@ export class ReportsComponent implements OnInit {
     const regexp = new RegExp('^[0-9]+$')
     if(this.id ==null || !regexp.test(this.id)){
       this.toastService.warning('La página solicitada no existe. 😥');
-      this.router.navigate(['/menu/maid'], {queryParams: { page: 1 }} );
+      this.router.navigate(['/maid/menu'], {queryParams: { page: 1 }} );
     }else{
       this.chambermaidReport.getReport(this.id).subscribe(data => {
         this.report=data;
@@ -56,7 +56,7 @@ export class ReportsComponent implements OnInit {
   onSubmit(){
     this.chambermaidReport.updatedStatusActivity(this.report).subscribe(
       resp => {
-        this.router.navigate(['/menu/maid/'], {queryParams: { page: 1 }});
+        this.router.navigate(['/maid/menu/'], {queryParams: { page: 1 }});
       }
     )
   }
