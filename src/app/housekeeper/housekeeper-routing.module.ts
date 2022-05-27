@@ -10,7 +10,7 @@ const routes: Routes = [
     path: '', component: HousekeeperComponent, canActivate: [MenuGuard],
     children: [
       {
-          path: 'modules', component: HousekeeperModulesComponent, canActivateChild: [MenuChildGuard]
+          path: 'housekeeper', component: HousekeeperModulesComponent, canActivateChild: [MenuChildGuard]
       }
     ]
   }
