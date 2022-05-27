@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import {WebcamModule} from 'ngx-webcam';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { MenuRoutingModule } from '../menu/menu-routing.module';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { VideoCaptureComponent } from './components/video-capture/video-capture.component';
 import { SearchComponent } from './components/search/search.component';
@@ -24,8 +23,7 @@ import { TypeReportPipe } from './pipes/type-report.pipe';
   imports: [
     CommonModule,
     FormsModule,
-    WebcamModule,
-    MenuRoutingModule
+    WebcamModule
   ],
   exports: [
     NavbarComponent,
