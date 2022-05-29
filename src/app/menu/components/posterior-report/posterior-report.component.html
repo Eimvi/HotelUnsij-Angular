@@ -19,7 +19,7 @@
       (ngSubmit)="submitForm()">
 
       <div>
-        <label for="video" class="form-label">Estado de amenidades y blancos</label>
+        <label for="video" class="form-label">Resultado final</label><br>
         <button class="btn btn-outline-primary" routerLink="/maid/reports/video" [queryParams]="{id, type: 'posterior'}"><i
             class="bi bi-camera-video-fill"></i> Tomar video</button>
             <div class="text-danger small" *ngIf="videoError">
@@ -27,7 +27,7 @@
             </div>
       </div>
       <div>
-        <label for="description" class="form-label">Desperfectos o faltantes</label>
+        <label for="description" class="form-label">Objetos olvidados</label>
         <textarea class="form-control" name="description" id="description" aria-label="With textarea"
           formControlName="description"></textarea>
 
@@ -38,6 +38,7 @@
       </div>
 
       <div>
+        <label for="camera" class="form-label">Amenidades colocadas</label>
         <button type="button" class="btn btn-outline-primary" routerLink="/maid/reports/camera" [queryParams]="{id, type: 'posterior'}"><i class="bi bi-camera-fill"></i> Tomar fotos (máximo 5)</button>
         <div class="text-danger small" *ngIf="imageError">
           *Mínimo una imagen es requerida.
