@@ -9,6 +9,7 @@ import { VideoFileComponent } from './components/video-file/video-file.component
 import { PreviousReportComponent } from './components/previous-report/previous-report.component';
 import { ReportsComponent } from './components/reports/reports.component';
 import { CameraFilesComponent } from './components/camera-files/camera-files.component';
+import { PosteriorReportComponent } from './components/posterior-report/posterior-report.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,9 @@ const routes: Routes = [
       },
       {
         path: 'reports/previous-report', component: PreviousReportComponent, canActivateChild: [MenuChildGuard]
+      },
+      {
+        path: 'reports/posterior-report', component: PosteriorReportComponent, canActivateChild: [MenuChildGuard]
       },
       {
         path:'reports/video', component: VideoFileComponent, canActivateChild: [MenuChildGuard]

@@ -12,6 +12,7 @@ import { VideoFileComponent } from './components/video-file/video-file.component
 import { PreviousReportComponent } from './components/previous-report/previous-report.component';
 import { ReportsComponent } from './components/reports/reports.component';
 import { CameraFilesComponent } from './components/camera-files/camera-files.component';
+import { PosteriorReportComponent } from './components/posterior-report/posterior-report.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CameraFilesComponent } from './components/camera-files/camera-files.com
     VideoFileComponent,
     PreviousReportComponent,
     ReportsComponent,
-    CameraFilesComponent
+    CameraFilesComponent,
+    PosteriorReportComponent
   ],
   imports: [
     CommonModule,

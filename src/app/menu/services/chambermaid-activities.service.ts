@@ -32,4 +32,13 @@ export class ChambermaidActivitiesService {
       tap(() => this.toastService.success('El reporte previo se guardo correctamente.'))
     );
   }
+
+  posteriorReportCreate(posteriorReport: FormData, id:string){
+    const query = {
+      id
+    }
+    return this.httpClient.patch(`${this.URL}posterior-report/update/`, posteriorReport,{params:query}).pipe(
+      tap(() => this.toastService.success('El reporte posterior se guardo correctamente.'))
+    );
+  }
 }
