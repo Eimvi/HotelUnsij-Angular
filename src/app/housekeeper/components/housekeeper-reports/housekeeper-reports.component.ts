@@ -28,7 +28,6 @@ export class HousekeeperReportsComponent implements OnInit {
     }else{
       this.housekeeperReport.getReportHousekeeper(this.id).subscribe(data => {
         this.report=data;
-        console.log(this.report)
 
         let statusPrevious = this.report.reports.previousReport.active;
         let statusPost = this.report.reports.posteriorReport.active;
