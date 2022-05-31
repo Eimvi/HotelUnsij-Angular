@@ -22,7 +22,7 @@ const routes: Routes = [
           path: 'menu', component: HousekeeperModulesComponent, canActivateChild: [MenuChildGuard]
       },
       {
-        path: 'reports/housekeeper-previous-report', component: HousekeeperPreviousReportComponent, canActivateChild: [MenuChildGuard]
+        path: 'reports/previous-report', component: HousekeeperPreviousReportComponent, canActivateChild: [MenuChildGuard]
       },
       {
         path:'reports/video', component: VideoFileComponent, canActivateChild: [MenuChildGuard]
