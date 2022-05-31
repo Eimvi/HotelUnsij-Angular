@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  URL : 'https://hotel-api-unsij.herokuapp.com/'
+  URL: ''
 };
 
 /*
