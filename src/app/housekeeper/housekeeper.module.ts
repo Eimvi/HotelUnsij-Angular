@@ -6,13 +6,15 @@ import { HousekeeperRoutingModule } from './housekeeper-routing.module';
 import { HousekeeperComponent } from './housekeeper.component';
 import { HousekeeperModulesComponent } from './components/housekeeper-modules/housekeeper-modules.component';
 import { SharedModule } from '../shared/shared.module';
+import { HousekeeperReportsComponent } from './components/housekeeper-reports/housekeeper-reports.component';
 
 
 
 @NgModule({
   declarations: [
     HousekeeperComponent,
-    HousekeeperModulesComponent
+    HousekeeperModulesComponent,
+    HousekeeperReportsComponent
   ],
   imports: [
     CommonModule,
