@@ -20,18 +20,18 @@ export class CameraFilesComponent implements OnInit {
     const regexp = new RegExp('^[0-9]+$');
     if (this.id == null || !regexp.test(this.id)) {
       this.toastService.warning('La página solicitada no existe. 😥');
-      this.router.navigate(['/housekeeper/menu'], {queryParams: { page: 1 }});
+      this.router.navigate(['/housekeeper/activities'], {queryParams: { page: 1 }});
     }else{
       this.verifyTypeReport();
     }
   }
 
   verifyTypeReport(): void{
-    if(this.typeReport == 'housekeeper-previous') this.typeReport = 'housekeeper-previous-report';
-    else if(this.typeReport == 'housekeeper-posterior') this.typeReport = 'housekeeper-posterior-report';
+    if(this.typeReport == 'previous') this.typeReport = 'previous-report';
+    else if(this.typeReport == 'posterior') this.typeReport = 'posterior-report';
     else {
       this.toastService.warning('No existe el tipo de reporte. 😥');
-      this.router.navigate(['/housekeeper/reports/'], {queryParams: { id: this.id }});
+      this.router.navigate(['/housekeeper/activities/'], {queryParams: { id: this.id }});
     }
   }
 
