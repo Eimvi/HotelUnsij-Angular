@@ -1,0 +1,42 @@
+<div class="card mb-4 border-0 rounded-0" *ngFor="let activity of activities">
+    <div class="card-header d-flex justify-content-between align-content-center bg-primary text-white rounded-top px-3">
+        <div class="d-flex align-items-center">
+            <span class="fw-bolder">ID: <span class="fw-normal">{{activity.id}}</span></span>
+        </div>
+        <div class="d-flex align-items-center">
+            <span class="fw-bolder">Asignación: <span class="fw-normal">{{activity.dateAssigned | date: 'yyyy/MM/dd' }}</span></span>
+        </div>
+    </div>
+    <div class="card-body d-flex flex-column gap-2 p-4 border border-1 border-top-0 border-bottom-0 px-3">
+        <p class="card-title fs-5 fw-bold text-primary"><i class="bi bi-door-closed"></i> {{activity.title}}</p>
+        <p class="card-subtitle text-muted small"> {{activity.description}}</p>
+        <p class="card-text m-0">Entrega de amenidades: <span class="fw-normal text-primary"><i class="bi bi-person"></i> Hipólito Javier</span>
+        </p>
+        <ul class="list-group list-group-flush fw-light">
+            <li class="list-group-item d-flex justify-content-between align-items-center m-0">
+                <span>Sábanas</span>
+                <span class="badge bg-primary rounded-pill">2</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center m-0">
+                <span>Almohadas</span>
+                <span class="badge bg-primary rounded-pill">2</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center m-0">
+                <span>Toallas</span>
+                <span class="badge bg-primary rounded-pill">2</span>
+            </li>
+        </ul>
+    </div>
+    <div class="card-footer d-flex gap-4 justify-content-between rounded-bottom border border-1 px-3">
+        <div class="d-flex align-items-center">
+            <span class="badge rounded-pill bg-success">{{activity.status | titlecase}}</span>
+        </div>
+        <div class="d-flex flex-column">
+            <span class="d-block">Hora inicio: <span class="fw-normal">{{activity.hourStart}}</span></span>
+            <span class="d-block">Hora fin: <span class="fw-normal">{{activity.hourEnd}}</span></span>
+        </div>
+        <div class="d-flex align-items-center">
+            <button class="btn btn-primary" [routerLink]="['/housekeeper/reports']" [queryParams]="{id: activity.id}" >Detalles</button>
+        </div>
+    </div>
+</div>
