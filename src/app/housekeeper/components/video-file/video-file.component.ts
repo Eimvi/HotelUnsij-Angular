@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { VideoCaptureService } from '../../menu/services/video-capture.service';
+import { VideoCaptureService } from '../../../menu/services/video-capture.service';
 
 @Component({
   selector: 'app-video-file',
