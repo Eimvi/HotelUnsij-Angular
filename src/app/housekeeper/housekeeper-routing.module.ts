@@ -7,8 +7,8 @@ import { HousekeeperComponent } from './housekeeper.component';
 import { HousekeeperModulesComponent } from './components/housekeeper-modules/housekeeper-modules.component';
 import { HousekeeperMenuComponent } from './components/housekeeper-menu/housekeeper-menu.component';
 import { HousekeeperPreviousReportComponent } from './components/housekeeper-previous-report/housekeeper-previous-report.component';
-import { VideoFileComponent } from './video-file/video-file.component';
-import { CameraFilesComponent } from './camera-files/camera-files.component';
+import { VideoFileComponent } from './components/video-file/video-file.component';
+import { CameraFilesComponent } from './components/camera-files/camera-files.component';
 import { HousekeeperReportsComponent } from './components/housekeeper-reports/housekeeper-reports.component';
 
 const routes: Routes = [
