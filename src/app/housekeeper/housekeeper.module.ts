@@ -13,6 +13,8 @@ import { HousekeeperPreviousReportComponent } from './components/housekeeper-pre
 import { VideoFileComponent } from './components/video-file/video-file.component';
 import { CameraFilesComponent } from './components/camera-files/camera-files.component';
 import { HousekeeperReportsComponent } from './components/housekeeper-reports/housekeeper-reports.component';
+import { HousekeeperInventoryComponent } from './components/housekeeper-inventory/housekeeper-inventory.component';
+import { HousekeeperInventoryCardComponent } from './components/housekeeper-inventory-card/housekeeper-inventory-card.component';
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { HousekeeperReportsComponent } from './components/housekeeper-reports/ho
     HousekeeperPreviousReportComponent,
     VideoFileComponent,
     CameraFilesComponent,
-    HousekeeperReportsComponent
+    HousekeeperReportsComponent,
+    HousekeeperInventoryComponent,
+    HousekeeperInventoryCardComponent
   ],
   imports: [
     CommonModule,
