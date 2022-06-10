@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HousekeeperInventoryService } from '../../services/housekeeper-inventory.service';
-import { Body, Amenidade } from '../../interfaces/inventory.interface';
+import { Register, Amenidades } from '../../interfaces/inventory.interface';
 
 @Component({
   selector: 'app-housekeeper-inventory',
@@ -9,8 +9,8 @@ import { Body, Amenidade } from '../../interfaces/inventory.interface';
 })
 export class HousekeeperInventoryComponent implements OnInit {
 
-  inventories!: Array<Body>;
-  amenidades!:  Array<Amenidade>;
+  inventories!: Array<Register>;
+  amenidades!:  Array<Amenidades>;
 
   constructor(private housekeeperInventoryService: HousekeeperInventoryService) { }
 

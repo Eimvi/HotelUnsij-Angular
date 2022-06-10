@@ -1,21 +1,21 @@
-export interface  RootObject {
+export interface  Body {
     status: number;
     message: string;
-    body: Body[];
+    body: Register[];
 } 
 
-export interface Body {
+export interface Register {
     id: number;
     type: string;
     status: string;
     maidName: string;
-    amenidades: Amenidade[];
+    amenidades: Amenidades[];
     hourStart: string;
     hourEnd: string;
     dateAssigned: string;
 }
 
-export interface Amenidade {
+export interface Amenidades {
     name: string;
     quantity: number;
 }

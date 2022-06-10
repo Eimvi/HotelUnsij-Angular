@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Body, Amenidade } from '../../interfaces/inventory.interface';
+import { Register, Amenidades } from '../../interfaces/inventory.interface';
 
 
 @Component({
@@ -9,7 +9,7 @@ import { Body, Amenidade } from '../../interfaces/inventory.interface';
 })
 export class HousekeeperInventoryCardComponent {
 
-  @Input() inventories!: Array<Body>;
-  @Input() amenidades!: Array<Amenidade>;
+  @Input() inventories!: Array<Register>;
+  @Input() amenidades!: Array<Amenidades>;
   
 }
