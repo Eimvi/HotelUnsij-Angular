@@ -15,8 +15,6 @@ import { HousekeeperAmenidadesService } from '../../services/housekeeper-amenida
 export class RegisterComponent implements OnInit {
   @Input() maidList!: Array<Body>;
   public data: ChamberMaid[] = []
-  actualPage: number = this.route.snapshot.queryParams['page'];
-  searchTxt: string = '';
   is_edit!: boolean;
   profile = this.profileService.showData();
 
@@ -84,34 +82,11 @@ export class RegisterComponent implements OnInit {
 
   }
 
-  pageSelected(page: number): void {
-    this.router.navigate([],
-      {
-        relativeTo: this.route,
-        queryParams: { page: page },
-        queryParamsHandling: 'merge'
-      });
-    this.actualPage = page;
-    this.getMaid();
-  }
-
-
   getMaid(): void {
     this.housekeeperAmenidades.getMaid()
       .subscribe(data => {
-        console.log(data)
         this.data = data
-        console.log(data)
       });
 
   }
-
-  alertMessagePage(): void {
-    this.toastService.warning('La página solicitada no existe. 😥');
-    this.pageSelected(1);
-  }
-
-  submitForm() {
-  }
-
 }
