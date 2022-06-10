@@ -33,4 +33,13 @@ export class HousekeeperActivitiesService {
       tap(() => this.toastService.success('El reporte previo se guardó correctamente.'))
     );
   }
+
+  housekeeperPosteriorReportCreate(housekeeperPosteriorReport: FormData, id:string){
+    const query = {
+      id
+    }
+    return this.httpClient.patch(`${this.URL}posterior-report-housekeeper/update/`, housekeeperPosteriorReport,{params:query}).pipe(
+      tap(() => this.toastService.success('El reporte posterior se guardo correctamente.'))
+    );
+  }
 }

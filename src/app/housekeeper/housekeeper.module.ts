@@ -15,7 +15,7 @@ import { CameraFilesComponent } from './components/camera-files/camera-files.com
 import { HousekeeperReportsComponent } from './components/housekeeper-reports/housekeeper-reports.component';
 import { HousekeeperInventoryComponent } from './components/housekeeper-inventory/housekeeper-inventory.component';
 import { HousekeeperInventoryCardComponent } from './components/housekeeper-inventory-card/housekeeper-inventory-card.component';
-
+import { HousekeeperPosteriorReportComponent } from './components/housekeeper-posterior-report/housekeeper-posterior-report.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,8 @@ import { HousekeeperInventoryCardComponent } from './components/housekeeper-inve
     CameraFilesComponent,
     HousekeeperReportsComponent,
     HousekeeperInventoryComponent,
-    HousekeeperInventoryCardComponent
+    HousekeeperInventoryCardComponent,
+    HousekeeperPosteriorReportComponent
   ],
   imports: [
     CommonModule,

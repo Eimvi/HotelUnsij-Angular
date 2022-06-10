@@ -11,6 +11,7 @@ import { VideoFileComponent } from './components/video-file/video-file.component
 import { CameraFilesComponent } from './components/camera-files/camera-files.component';
 import { HousekeeperReportsComponent } from './components/housekeeper-reports/housekeeper-reports.component';
 import { HousekeeperInventoryComponent } from './components/housekeeper-inventory/housekeeper-inventory.component';
+import { HousekeeperPosteriorReportComponent } from './components/housekeeper-posterior-report/housekeeper-posterior-report.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,9 @@ const routes: Routes = [
       },
       {
         path: 'reports/previous-report', component: HousekeeperPreviousReportComponent, canActivateChild: [MenuChildGuard]
+      },
+      {
+        path: 'reports/posterior-report', component: HousekeeperPosteriorReportComponent, canActivateChild: [MenuChildGuard]
       },
       {
         path:'reports/video', component: VideoFileComponent, canActivateChild: [MenuChildGuard]
