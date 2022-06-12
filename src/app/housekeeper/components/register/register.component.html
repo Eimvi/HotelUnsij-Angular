@@ -27,7 +27,7 @@
 
       <div>
         <label  for="recibe" class="form-label">Recibe</label>
-        <select [disabled]="is_edit" #recibe (change)='option(recibe.value)'  id="recibe" class="form-select" aria-label="Default select example">
+        <select [disabled]="isEdit" #recibe (change)='option(recibe.value)'  id="recibe" class="form-select" aria-label="Default select example">
           <option hidden selected>Selecciona una opción</option>
           <option *ngFor="let maid of data" value="{{maid.id}}">{{maid.name}}</option>
         </select>
@@ -60,7 +60,7 @@
 
       <div class="d-grid gap-4">
         <input type="submit" value="Guardar" class="btn btn-lg btn-primary shadow-sm">
-        <button routerLink="/housekeeper/amenityRecordsList" class="btn btn-lg btn-outline-primary shadow-sm">Cancelar</button>
+        <button routerLink="/housekeeper/register" class="btn btn-lg btn-outline-primary shadow-sm">Cancelar</button>
       </div>
 
     </form>
