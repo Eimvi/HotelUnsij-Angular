@@ -40,7 +40,7 @@ const routes: Routes = [
         path: 'reports', component: HousekeeperReportsComponent, canActivateChild: [MenuChildGuard]
       },
       {
-        path: 'register', component: RegisterComponent, canActivateChild: [MenuChildGuard]
+        path: 'AmenitiesOutIn', component: RegisterComponent, canActivateChild: [MenuChildGuard]
       }
     ]
   }
