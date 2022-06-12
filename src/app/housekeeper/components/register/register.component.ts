@@ -1,8 +1,8 @@
-import { Component, OnInit, Input} from '@angular/core';
-import { ChamberMaid} from '../../interfaces/registerAmenidades.interface';
+import { Component, OnInit, Input } from '@angular/core';
+import { ChamberMaid } from '../../interfaces/registerAmenidades.interface';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { FormGroup, FormBuilder} from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { Register } from '../../interfaces/registerAmenidades.interface';
 import { ProfileService } from 'src/app/auth/services/profile.service';
 import { HousekeeperAmenidadesService } from '../../services/housekeeper-amenidades.service';
@@ -14,15 +14,15 @@ import { HousekeeperAmenidadesService } from '../../services/housekeeper-amenida
 })
 export class RegisterComponent implements OnInit {
   @Input() maidList!: Array<Body>;
-  public data: ChamberMaid[] = []
-  is_edit!: boolean;
+  data: ChamberMaid[] = []
+  isEdit: boolean = true;
   profile = this.profileService.showData();
 
   registerAmenidades!: FormGroup;
 
 
   constructor(private router: Router, private route: ActivatedRoute, private toastService: ToastrService,
-    private housekeeperAmenidades: HousekeeperAmenidadesService, private fb: FormBuilder, private profileService: ProfileService) { this.is_edit = true; }
+    private housekeeperAmenidades: HousekeeperAmenidadesService, private fb: FormBuilder, private profileService: ProfileService) { }
 
   ngOnInit(): void {
     this.registerAmenidades = this.fb.group({
@@ -37,12 +37,15 @@ export class RegisterComponent implements OnInit {
 
   onOptionsSelected(value: string) {
     if (value == 'Camarista') {
-      this.is_edit = false;
+      this.isEdit = false;
       this.getMaid();
     } else {
-      this.is_edit = true;
+      this.isEdit = true;
       this.data = [];
-
+      this.registerAmenidades.patchValue({
+        id: [this.profile.id],
+        name: [this.profile.name]
+      })
     }
   }
 
@@ -54,10 +57,10 @@ export class RegisterComponent implements OnInit {
 
 
   onSubmit() {
-    const register : Register = {
-      id:this.registerAmenidades.get('id')?.value,
-      type:this.registerAmenidades.get('type')?.value,
-      name:this.registerAmenidades.get('name')?.value,
+    const register: Register = {
+      id: this.registerAmenidades.get('id')?.value,
+      type: this.registerAmenidades.get('type')?.value,
+      name: this.registerAmenidades.get('name')?.value,
 
       amenidades: [
         {
@@ -74,9 +77,12 @@ export class RegisterComponent implements OnInit {
         }
       ]
     }
+    console.log(register)
     this.housekeeperAmenidades.sendInfo(register).subscribe(
       resp => {
-        this.router.navigate(['/housekeeper/amenityRecordsList']);
+        this.router.navigate(['/housekeeper/register']);
+        this.toastService.success('¡Registo guardado exitosamente!');
+
       }
     )
 
