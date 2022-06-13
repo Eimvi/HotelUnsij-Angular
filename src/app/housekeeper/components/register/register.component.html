@@ -8,6 +8,7 @@
       aria-label="breadcrumb">
       <ol class="breadcrumb mb-0">
         <li class="breadcrumb-item"><a routerLink="/housekeeper/menu" [queryParams]="{page: '1'}">Menú</a></li>
+        <li class="breadcrumb-item"><a routerLink="/housekeeper/registers" [queryParams]="{page: '1'}">Registros de amenidades</a></li>
         <li class="breadcrumb-item active" aria-current="page">Registrar amenidades</li>
       </ol>
     </nav>
@@ -60,7 +61,7 @@
 
       <div class="d-grid gap-4">
         <input type="submit" value="Guardar" class="btn btn-lg btn-primary shadow-sm">
-        <button routerLink="/housekeeper/register" class="btn btn-lg btn-outline-primary shadow-sm">Cancelar</button>
+        <button routerLink="/housekeeper/registers" class="btn btn-lg btn-outline-primary shadow-sm">Cancelar</button>
       </div>
 
     </form>
