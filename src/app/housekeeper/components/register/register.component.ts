@@ -77,11 +77,10 @@ export class RegisterComponent implements OnInit {
         }
       ]
     }
-    console.log(register)
     this.housekeeperAmenidades.sendInfo(register).subscribe(
       resp => {
         this.router.navigate(['/housekeeper/register']);
-        this.toastService.success('¡Registo guardado exitosamente!');
+        this.toastService.success('¡Registro guardado exitosamente!');
 
       }
     )
