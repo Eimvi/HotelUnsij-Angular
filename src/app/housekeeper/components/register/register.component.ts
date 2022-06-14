@@ -1,7 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ChamberMaid } from '../../interfaces/registerAmenidades.interface';
-import { Router, ActivatedRoute } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Register } from '../../interfaces/registerAmenidades.interface';
 import { ProfileService } from 'src/app/auth/services/profile.service';
@@ -21,8 +19,7 @@ export class RegisterComponent implements OnInit {
   registerAmenidades!: FormGroup;
 
 
-  constructor(private router: Router, private route: ActivatedRoute, private toastService: ToastrService,
-    private housekeeperAmenidades: HousekeeperAmenidadesService, private fb: FormBuilder, private profileService: ProfileService) { }
+  constructor(private housekeeperAmenidades: HousekeeperAmenidadesService, private fb: FormBuilder, private profileService: ProfileService) { }
 
   ngOnInit(): void {
     this.registerAmenidades = this.fb.group({
@@ -77,13 +74,8 @@ export class RegisterComponent implements OnInit {
         }
       ]
     }
-    this.housekeeperAmenidades.sendInfo(register).subscribe(
-      resp => {
-        this.router.navigate(['/housekeeper/registers']);
-        this.toastService.success('¡Registro guardado exitosamente!');
 
-      }
-    )
+    this.housekeeperAmenidades.sendInfo(register).subscribe();
 
   }
 
@@ -92,6 +84,5 @@ export class RegisterComponent implements OnInit {
       .subscribe(data => {
         this.data = data
       });
-
   }
 }
