@@ -14,8 +14,9 @@ import { VideoFileComponent } from './components/video-file/video-file.component
 import { CameraFilesComponent } from './components/camera-files/camera-files.component';
 import { HousekeeperReportsComponent } from './components/housekeeper-reports/housekeeper-reports.component';
 import { RegisterComponent } from './components/register/register.component';
-
-
+import { HousekeeperInventoryComponent } from './components/housekeeper-inventory/housekeeper-inventory.component';
+import { HousekeeperInventoryCardComponent } from './components/housekeeper-inventory-card/housekeeper-inventory-card.component';
+import { HousekeeperPosteriorReportComponent } from './components/housekeeper-posterior-report/housekeeper-posterior-report.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,10 @@ import { RegisterComponent } from './components/register/register.component';
     VideoFileComponent,
     CameraFilesComponent,
     HousekeeperReportsComponent,
-    RegisterComponent
+    RegisterComponent,
+    HousekeeperInventoryComponent,
+    HousekeeperInventoryCardComponent,
+    HousekeeperPosteriorReportComponent
   ],
   imports: [
     CommonModule,
