@@ -17,6 +17,7 @@ const routes: Routes = [
     redirectTo: 'auth',
     pathMatch: 'full'
   },
+  { path: 'attendant', loadChildren: () => import('./attendant/attendant.module').then(m => m.AttendantModule) },
   {
     path: '**',
     component: NotFoundComponent
