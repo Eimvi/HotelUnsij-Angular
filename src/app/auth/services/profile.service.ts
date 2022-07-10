@@ -80,7 +80,7 @@ export class ProfileService {
   getNameRoute(){
     const route: string = this.profile?.role.jobPosition;
     if(route == 'camarista') return 'maid';
-    if(route == 'encargado') return 'attendad';
+    if(route == 'encargado') return 'attendant';
     if(route == 'ama de llaves') return 'housekeeper';
     return route;
   }
