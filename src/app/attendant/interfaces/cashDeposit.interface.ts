@@ -1,7 +1,15 @@
-export interface Body {
+export interface BodyGetRegisters {
     status: number;
     message: string;
-    body: Register[];
+    body: Body;
+}
+
+export interface Body {
+    list: Register[];
+    count: number;
+    page: number;
+    page_count: number;
+    page_size: number;
 }
 
 export interface Register {
