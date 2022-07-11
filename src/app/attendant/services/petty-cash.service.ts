@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Register, Body } from '../interfaces/pettyCash.interface';
+import { Body, BodyGetRegisters } from '../interfaces/pettyCash.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +14,10 @@ export class PettyCashService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getRegisters(): Observable<Register[]> {
-    return this.httpClient.get<Body>(`${this.URL}attendant/cash`).pipe(
-      map((response) => {
+  getRegisters(page: number = 1, keyword: string = ''): Observable<Body> {
+    const query = { page, keyword };
+    return this.httpClient.get<BodyGetRegisters>(`${this.URL}attendant/cash`, { params: query }).pipe(
+      map((response) => {        
         return response.body;
       })
     );
