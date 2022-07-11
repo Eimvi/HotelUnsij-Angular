@@ -18,10 +18,13 @@
             </button>
         </div>
 
-        <app-search></app-search>
+        <app-search (searchTxtEmit)="filterActivities($event)"></app-search>
 
-        
         <app-petty-cash-card [registers]="registers"></app-petty-cash-card>
-        
+
+        <div class="d-flex justify-content-center">
+            <app-pagination [pages]="pageSize" (pageSelected)="pageSelected($event)"></app-pagination>
+        </div>
+
     </div>
 </div>
