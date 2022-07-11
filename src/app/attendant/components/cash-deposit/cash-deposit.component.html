@@ -14,13 +14,17 @@
 
         <div class="m-auto">
             <button class="btn btn-lg btn-primary ">
-                Realizar depósito en efectivo
+                Realizar depósito
             </button>
         </div>
 
-        <app-search></app-search>
+        <app-search (searchTxtEmit)="filterActivities($event)"></app-search>
         
         <app-cash-deposit-card [registers]="registers"></app-cash-deposit-card>
+
+        <div class="d-flex justify-content-center">
+            <app-pagination [pages]="pageSize" (pageSelected)="pageSelected($event)"></app-pagination>
+        </div>
         
     </div>
 </div>
