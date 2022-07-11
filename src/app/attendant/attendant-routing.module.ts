@@ -9,7 +9,7 @@ import { PettyCashComponent } from './components/petty-cash/petty-cash.component
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'petty-cash',
+    redirectTo: 'menu',
     pathMatch: 'full'
   },
   {
