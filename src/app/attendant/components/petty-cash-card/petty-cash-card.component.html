@@ -16,7 +16,7 @@
         <p class="card-title fs-5 fw-bold text-primary">{{register.createdAt | date: 'EEEE, MMMM d' }}</p>
         
         <p class="card-text m-0">
-            Monto en caja chica: <span class="fw-normal text-primary">${{register.totalDeposit}}.00</span>
+            Monto en caja chica: <span class="fw-normal text-primary">{{register.totalDeposit | currency}}</span>
         </p>
 
         <p class="card-subtitle small">Observaciones:
