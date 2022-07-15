@@ -1,0 +1,61 @@
+<div class="container my-5">
+  <div class="mx-4 mx-sm-auto d-flex flex-column gap-4 justify-content-center col-sm-7 col-md-6 col-lg-4 lg:p-x-6">
+
+    <h1 class="text-center fs-2 fw-normal text-primary m-0">Reporte de depósito</h1>
+
+    <nav
+      style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='currentColor' class='bi bi-chevron-right' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E&#34;);"
+      aria-label="breadcrumb">
+      <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item"><a routerLink="/housekeeper/menu">Menú</a></li>
+        <li class="breadcrumb-item"><a routerLink="/housekeeper/activities">Depósito de efectivo</a></li>
+        <li class="breadcrumb-item">Reportes de depósito</li>
+      </ol>
+    </nav>
+
+    <p>Fecha de reporte: {{myDate | date: 'EEEE, MMMM d, y' }} </p>
+
+    <form class="d-flex flex-column gap-4 needs-validation css-form" [formGroup]="depositReport" (ngSubmit)="submitForm()">
+
+      <div>
+        <label for="video" class="form-label">Conteo de dinero</label><br>
+        <button class="btn btn-outline-primary" routerLink="/attendant/deposit/video"><i
+            class="bi bi-camera-video-fill"></i> Tomar video</button>
+            <div class="text-danger small" *ngIf="videoError">
+              *El video es requerido.
+            </div>
+      </div>
+
+      <div>
+        <label for="video" class="form-label">Evidencia de depósito</label><br>
+        <button type="button" class="btn btn-outline-primary" routerLink="/attendant/deposit/camera"><i
+            class="bi bi-camera-fill"></i> Tomar fotos (máximo 5)</button>
+        <div class="text-danger small" *ngIf="imageError">
+          *Mínimo una imagen es requerida.
+        </div>
+      </div>
+
+      <div>
+        <button type="button" class="btn btn-outline-primary "><i class="bi bi-eye-fill"></i> Ver fotos</button>
+      </div>
+
+      <div>
+        <label for="observaciones" class="form-label">Observaciones</label>
+        <textarea class="form-control" name="observaciones" id="observaciones" aria-label="With textarea"
+          formControlName="observaciones"></textarea>
+        <div class="text-danger small"
+          *ngIf="depositReport.get('observaciones')?.hasError('maxlength') && depositReport.get('observaciones')?.touched">
+          *Las observaciones no debe contener mas de 100 caracteres
+        </div>
+      </div>
+
+
+      <div class="d-grid gap-4">
+        <input [disabled]="depositReport.invalid" type="submit" value="Guardar" class="btn btn-lg btn-primary shadow-sm">
+        <button routerLink="/housekeeper/reports" class="btn btn-lg btn-outline-primary shadow-sm">Cancelar</button>
+      </div>
+
+    </form>
+
+  </div>
+</div>
